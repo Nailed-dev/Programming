@@ -37,10 +37,10 @@ namespace ObjectOrientedPractics.View.Tabs
         {
             IdTextBox.Clear();
             FullNameTextBox.Clear();
-            AddressTextBox.Clear();
+            
             IdTextBox.BackColor = Colors.NormalColor;
             FullNameTextBox.BackColor = Colors.NormalColor;
-            AddressTextBox.BackColor = Colors.NormalColor;
+            
         }
 
         /// <summary>
@@ -51,7 +51,7 @@ namespace ObjectOrientedPractics.View.Tabs
         {
             IdTextBox.Text = customer.Id.ToString();
             FullNameTextBox.Text = customer.Fullname;
-            AddressTextBox.Text = customer.Address;
+            
         }
 
         /// <summary>
@@ -109,23 +109,8 @@ namespace ObjectOrientedPractics.View.Tabs
             }
         }
 
-        /// <summary>
-        /// Изменение адреса пользователя, когда изменяется адрес в AddressTextBox.
-        /// </summary>
-        private void AddressTextBox_TextChanged(object sender, EventArgs e)
-        {
-            if (_customers.Count == 0) return;
-
-            try
-            {
-                AddressTextBox.BackColor = Colors.NormalColor;
-                _currentCustomer.Address = AddressTextBox.Text;
-            }
-            catch
-            {
-                AddressTextBox.BackColor = Colors.ErrorColor;
-            }
-        }
+        
+        
 
         /// <summary>
         /// Обновление данных при выборе пользователя в CustomersListBox.

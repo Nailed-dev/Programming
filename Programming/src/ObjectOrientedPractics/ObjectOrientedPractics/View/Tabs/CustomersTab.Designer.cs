@@ -38,7 +38,6 @@
             panel4 = new Panel();
             tableLayoutPanel4 = new TableLayoutPanel();
             panel2 = new Panel();
-            AddressTextBox = new TextBox();
             IdTextBox = new TextBox();
             FullNameTextBox = new TextBox();
             label5 = new Label();
@@ -169,7 +168,6 @@
             // 
             // panel2
             // 
-            panel2.Controls.Add(AddressTextBox);
             panel2.Controls.Add(IdTextBox);
             panel2.Controls.Add(FullNameTextBox);
             panel2.Controls.Add(label5);
@@ -181,18 +179,6 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(768, 486);
             panel2.TabIndex = 0;
-            // 
-            // AddressTextBox
-            // 
-            AddressTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            AddressTextBox.BorderStyle = BorderStyle.FixedSingle;
-            AddressTextBox.Location = new Point(3, 242);
-            AddressTextBox.MaximumSize = new Size(1100, 1000);
-            AddressTextBox.Multiline = true;
-            AddressTextBox.Name = "AddressTextBox";
-            AddressTextBox.Size = new Size(762, 241);
-            AddressTextBox.TabIndex = 6;
-            AddressTextBox.TextChanged += AddressTextBox_TextChanged;
             // 
             // IdTextBox
             // 
@@ -299,7 +285,6 @@
         private Label label2;
         private TextBox IdTextBox;
         private TextBox FullNameTextBox;
-        private TextBox AddressTextBox;
         private Panel panel4;
         private TableLayoutPanel tableLayoutPanel4;
     }

@@ -163,9 +163,11 @@
             // 
             // ItemCategoryComboBox
             // 
+            ItemCategoryComboBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             ItemCategoryComboBox.BackColor = Color.White;
             ItemCategoryComboBox.FormattingEnabled = true;
             ItemCategoryComboBox.Location = new Point(131, 195);
+            ItemCategoryComboBox.MaximumSize = new Size(600, 0);
             ItemCategoryComboBox.Name = "ItemCategoryComboBox";
             ItemCategoryComboBox.Size = new Size(218, 38);
             ItemCategoryComboBox.TabIndex = 10;

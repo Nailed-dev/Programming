@@ -113,6 +113,7 @@ namespace ObjectOrientedPractics.View.Tabs
             CostTextBox.BackColor = Colors.NormalColor;
             NameTextBox.BackColor = Colors.NormalColor;
             DescriptionTextBox.BackColor = Colors.NormalColor;
+            
         }
 
         /// <summary>
@@ -178,15 +179,12 @@ namespace ObjectOrientedPractics.View.Tabs
             }
         }
 
-        private System.Windows.Forms.ComboBox GetItemCategoryComboBox()
-        {
-            return ItemCategoryComboBox;
-        }
+        
 
         private void ItemCategoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (ItemsListBox.SelectedIndex == -1) return;
-            if (ItemsListBox.SelectedIndex == 0) return;
+            
             try
             {
                 _currentItem.Category = ItemCategoryComboBox.SelectedItem.ToString();
