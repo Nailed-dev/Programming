@@ -16,5 +16,7 @@ namespace ObjectOrientedPractics.View.Controls
         {
             InitializeComponent();
         }
+
+        
     }
 }
