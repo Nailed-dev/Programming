@@ -41,10 +41,10 @@
             IdTextBox = new TextBox();
             FullNameTextBox = new TextBox();
             label5 = new Label();
-            label4 = new Label();
             label3 = new Label();
             label2 = new Label();
             panel3 = new Panel();
+            addressControl1 = new ObjectOrientedPractics.View.Controls.AddressControl();
             tableLayoutPanel1.SuspendLayout();
             panel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
@@ -168,10 +168,10 @@
             // 
             // panel2
             // 
+            panel2.Controls.Add(addressControl1);
             panel2.Controls.Add(IdTextBox);
             panel2.Controls.Add(FullNameTextBox);
             panel2.Controls.Add(label5);
-            panel2.Controls.Add(label4);
             panel2.Controls.Add(label3);
             panel2.Controls.Add(label2);
             panel2.Dock = DockStyle.Fill;
@@ -212,15 +212,6 @@
             label5.TabIndex = 3;
             label5.Text = "Full Name:";
             // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Location = new Point(3, 209);
-            label4.Name = "label4";
-            label4.Size = new Size(92, 30);
-            label4.TabIndex = 2;
-            label4.Text = "Address:";
-            // 
             // label3
             // 
             label3.AutoSize = true;
@@ -248,6 +239,13 @@
             panel3.Name = "panel3";
             panel3.Size = new Size(768, 596);
             panel3.TabIndex = 1;
+            // 
+            // addressControl1
+            // 
+            addressControl1.Location = new Point(3, 200);
+            addressControl1.Name = "addressControl1";
+            addressControl1.Size = new Size(768, 283);
+            addressControl1.TabIndex = 6;
             // 
             // CustomersTab
             // 
@@ -280,12 +278,12 @@
         private Panel panel2;
         private Panel panel3;
         private Label label5;
-        private Label label4;
         private Label label3;
         private Label label2;
         private TextBox IdTextBox;
         private TextBox FullNameTextBox;
         private Panel panel4;
         private TableLayoutPanel tableLayoutPanel4;
+        private Controls.AddressControl addressControl1;
     }
 }
