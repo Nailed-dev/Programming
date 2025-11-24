@@ -7,7 +7,7 @@ using ObjectOrientedPractics.Services;
 
 namespace ObjectOrientedPractics.Model
 {
-    internal class Address
+    public class Address
     {
         /// <summary>
         /// Почтовый индекс.
@@ -163,7 +163,7 @@ namespace ObjectOrientedPractics.Model
         /// </summary>
         public Address()
         {
-            Index = 1000000;
+            Index = 100000;
             Country = "";
             City = "";
             Street = "";

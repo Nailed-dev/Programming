@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
-            textBox6 = new TextBox();
-            textBox5 = new TextBox();
-            textBox4 = new TextBox();
-            textBox3 = new TextBox();
-            textBox2 = new TextBox();
-            textBox1 = new TextBox();
+            AddressApartmentTextBox = new TextBox();
+            AddressBuildingTextBox = new TextBox();
+            AddressCityTextBox = new TextBox();
+            AddressStreetTextBox = new TextBox();
+            AddressCountryTextBox = new TextBox();
+            AddressIndexTextBox = new TextBox();
             label7 = new Label();
             label6 = new Label();
             label5 = new Label();
@@ -48,12 +48,12 @@
             // panel1
             // 
             panel1.BackColor = Color.White;
-            panel1.Controls.Add(textBox6);
-            panel1.Controls.Add(textBox5);
-            panel1.Controls.Add(textBox4);
-            panel1.Controls.Add(textBox3);
-            panel1.Controls.Add(textBox2);
-            panel1.Controls.Add(textBox1);
+            panel1.Controls.Add(AddressApartmentTextBox);
+            panel1.Controls.Add(AddressBuildingTextBox);
+            panel1.Controls.Add(AddressCityTextBox);
+            panel1.Controls.Add(AddressStreetTextBox);
+            panel1.Controls.Add(AddressCountryTextBox);
+            panel1.Controls.Add(AddressIndexTextBox);
             panel1.Controls.Add(label7);
             panel1.Controls.Add(label6);
             panel1.Controls.Add(label5);
@@ -67,59 +67,65 @@
             panel1.Size = new Size(765, 289);
             panel1.TabIndex = 0;
             // 
-            // textBox6
+            // AddressApartmentTextBox
             // 
-            textBox6.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            textBox6.BorderStyle = BorderStyle.FixedSingle;
-            textBox6.Location = new Point(469, 198);
-            textBox6.Name = "textBox6";
-            textBox6.Size = new Size(175, 35);
-            textBox6.TabIndex = 12;
+            AddressApartmentTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            AddressApartmentTextBox.BorderStyle = BorderStyle.FixedSingle;
+            AddressApartmentTextBox.Location = new Point(469, 198);
+            AddressApartmentTextBox.Name = "AddressApartmentTextBox";
+            AddressApartmentTextBox.Size = new Size(175, 35);
+            AddressApartmentTextBox.TabIndex = 12;
+            AddressApartmentTextBox.TextChanged += AddressApartmentTextBox_TextChanged;
             // 
-            // textBox5
+            // AddressBuildingTextBox
             // 
-            textBox5.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            textBox5.BorderStyle = BorderStyle.FixedSingle;
-            textBox5.Location = new Point(123, 198);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(175, 35);
-            textBox5.TabIndex = 11;
+            AddressBuildingTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            AddressBuildingTextBox.BorderStyle = BorderStyle.FixedSingle;
+            AddressBuildingTextBox.Location = new Point(123, 198);
+            AddressBuildingTextBox.Name = "AddressBuildingTextBox";
+            AddressBuildingTextBox.Size = new Size(175, 35);
+            AddressBuildingTextBox.TabIndex = 11;
+            AddressBuildingTextBox.TextChanged += AddressBuildingTextBox_TextChanged;
             // 
-            // textBox4
+            // AddressCityTextBox
             // 
-            textBox4.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            textBox4.BorderStyle = BorderStyle.FixedSingle;
-            textBox4.Location = new Point(509, 96);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(237, 35);
-            textBox4.TabIndex = 10;
+            AddressCityTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            AddressCityTextBox.BorderStyle = BorderStyle.FixedSingle;
+            AddressCityTextBox.Location = new Point(509, 96);
+            AddressCityTextBox.Name = "AddressCityTextBox";
+            AddressCityTextBox.Size = new Size(237, 35);
+            AddressCityTextBox.TabIndex = 10;
+            AddressCityTextBox.TextChanged += AddressCityTextBox_TextChanged;
             // 
-            // textBox3
+            // AddressStreetTextBox
             // 
-            textBox3.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            textBox3.BorderStyle = BorderStyle.FixedSingle;
-            textBox3.Location = new Point(120, 147);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(626, 35);
-            textBox3.TabIndex = 9;
+            AddressStreetTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            AddressStreetTextBox.BorderStyle = BorderStyle.FixedSingle;
+            AddressStreetTextBox.Location = new Point(120, 147);
+            AddressStreetTextBox.Name = "AddressStreetTextBox";
+            AddressStreetTextBox.Size = new Size(626, 35);
+            AddressStreetTextBox.TabIndex = 9;
+            AddressStreetTextBox.TextChanged += AddressStreetTextBox_TextChanged;
             // 
-            // textBox2
+            // AddressCountryTextBox
             // 
-            textBox2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            textBox2.BorderStyle = BorderStyle.FixedSingle;
-            textBox2.Location = new Point(118, 96);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(284, 35);
-            textBox2.TabIndex = 8;
+            AddressCountryTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            AddressCountryTextBox.BorderStyle = BorderStyle.FixedSingle;
+            AddressCountryTextBox.Location = new Point(118, 96);
+            AddressCountryTextBox.Name = "AddressCountryTextBox";
+            AddressCountryTextBox.Size = new Size(284, 35);
+            AddressCountryTextBox.TabIndex = 8;
+            AddressCountryTextBox.TextChanged += AddressCountryTextBox_TextChanged;
             // 
-            // textBox1
+            // AddressIndexTextBox
             // 
-            textBox1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            textBox1.BorderStyle = BorderStyle.FixedSingle;
-            textBox1.Location = new Point(120, 45);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(213, 35);
-            textBox1.TabIndex = 7;
+            AddressIndexTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            AddressIndexTextBox.BorderStyle = BorderStyle.FixedSingle;
+            AddressIndexTextBox.Location = new Point(120, 45);
+            AddressIndexTextBox.Name = "AddressIndexTextBox";
+            AddressIndexTextBox.Size = new Size(213, 35);
+            AddressIndexTextBox.TabIndex = 7;
+            AddressIndexTextBox.TextChanged += AddressIndexTextBoxes_TextChanged;
             // 
             // label7
             // 
@@ -207,11 +213,11 @@
         private Label label3;
         private Label label2;
         private Label label1;
-        private TextBox textBox6;
-        private TextBox textBox5;
-        private TextBox textBox4;
-        private TextBox textBox3;
-        private TextBox textBox2;
-        private TextBox textBox1;
+        private TextBox AddressApartmentTextBox;
+        private TextBox AddressBuildingTextBox;
+        private TextBox AddressCityTextBox;
+        private TextBox AddressStreetTextBox;
+        private TextBox AddressCountryTextBox;
+        private TextBox AddressIndexTextBox;
     }
 }
