@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ObjectOrientedPractics.Services;
+using ObjectOrientedPractics.View.Controls;
 
 namespace ObjectOrientedPractics.Model
 {
@@ -23,7 +24,7 @@ namespace ObjectOrientedPractics.Model
         /// <summary>
         /// Адресс доставки.
         /// </summary>
-        private string _address;
+        private Address _address;
         
         /// <summary>
         /// Возвращает _id.
@@ -52,7 +53,7 @@ namespace ObjectOrientedPractics.Model
         /// Возвращает и задает адресс доставки.
         /// </summary>
         /// <exception cref="ArgumentException">Адресс должен иметь меньше 500 символов.</exception>
-        public string Address
+        public Address Address
         {
             get
             {
@@ -60,8 +61,7 @@ namespace ObjectOrientedPractics.Model
             }
             set
             {
-                ValueValidator.AssertStringOnLength(value, 500, nameof(Address));
-                ValueValidator.AssertEmptyValue(value, nameof(Address));
+                
                 _address = value;
             }
         }
@@ -79,7 +79,7 @@ namespace ObjectOrientedPractics.Model
         /// </summary>
         /// <param name="fullname"></param>
         /// <param name="address"></param>
-        public Customer(string fullname, string address)
+        public Customer(string fullname, Address address)
         {
             Fullname = fullname;
             Address = address;
