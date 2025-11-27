@@ -38,13 +38,13 @@
             panel4 = new Panel();
             tableLayoutPanel4 = new TableLayoutPanel();
             panel2 = new Panel();
+            AddressControl = new ObjectOrientedPractics.View.Controls.AddressControl();
             IdTextBox = new TextBox();
             FullNameTextBox = new TextBox();
             label5 = new Label();
             label3 = new Label();
             label2 = new Label();
             panel3 = new Panel();
-            addressControl1 = new ObjectOrientedPractics.View.Controls.AddressControl();
             tableLayoutPanel1.SuspendLayout();
             panel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
@@ -168,7 +168,7 @@
             // 
             // panel2
             // 
-            panel2.Controls.Add(addressControl1);
+            panel2.Controls.Add(AddressControl);
             panel2.Controls.Add(IdTextBox);
             panel2.Controls.Add(FullNameTextBox);
             panel2.Controls.Add(label5);
@@ -179,6 +179,13 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(768, 486);
             panel2.TabIndex = 0;
+            // 
+            // AddressControl
+            // 
+            AddressControl.Location = new Point(3, 200);
+            AddressControl.Name = "AddressControl";
+            AddressControl.Size = new Size(768, 283);
+            AddressControl.TabIndex = 6;
             // 
             // IdTextBox
             // 
@@ -240,13 +247,6 @@
             panel3.Size = new Size(768, 596);
             panel3.TabIndex = 1;
             // 
-            // addressControl1
-            // 
-            addressControl1.Location = new Point(3, 200);
-            addressControl1.Name = "addressControl1";
-            addressControl1.Size = new Size(768, 283);
-            addressControl1.TabIndex = 6;
-            // 
             // CustomersTab
             // 
             AutoScaleDimensions = new SizeF(12F, 30F);
@@ -284,6 +284,6 @@
         private TextBox FullNameTextBox;
         private Panel panel4;
         private TableLayoutPanel tableLayoutPanel4;
-        private Controls.AddressControl addressControl1;
+        private Controls.AddressControl AddressControl;
     }
 }

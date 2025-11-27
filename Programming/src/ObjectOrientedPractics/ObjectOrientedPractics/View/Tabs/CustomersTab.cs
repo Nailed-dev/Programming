@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ObjectOrientedPractics.Model;
 using ObjectOrientedPractics.Services;
+using ObjectOrientedPractics.View.Controls;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace ObjectOrientedPractics.View.Tabs
@@ -28,6 +29,7 @@ namespace ObjectOrientedPractics.View.Tabs
         public CustomersTab()
         {
             InitializeComponent();
+            AddressControl.Address = new Address();
         }
 
         /// <summary>
@@ -40,7 +42,8 @@ namespace ObjectOrientedPractics.View.Tabs
             
             IdTextBox.BackColor = Colors.NormalColor;
             FullNameTextBox.BackColor = Colors.NormalColor;
-            
+            AddressControl.Address = new Address();
+
         }
 
         /// <summary>
@@ -51,7 +54,8 @@ namespace ObjectOrientedPractics.View.Tabs
         {
             IdTextBox.Text = customer.Id.ToString();
             FullNameTextBox.Text = customer.Fullname;
-            
+            AddressControl.Address = customer.Address;
+
         }
 
         /// <summary>
@@ -59,7 +63,7 @@ namespace ObjectOrientedPractics.View.Tabs
         /// </summary>
         private void AddButton_Click(object sender, EventArgs e)
         {
-            _currentCustomer = new Customer("Empy user", "Empty address");
+            _currentCustomer = new Customer("Empy user", new Address());
             _customers.Add(_currentCustomer);
             CustomersListBox.Items.Add(_currentCustomer.Fullname);
             CustomersListBox.SelectedIndex = _customers.Count - 1;
@@ -83,11 +87,17 @@ namespace ObjectOrientedPractics.View.Tabs
             else
                 CustomersListBox.SelectedIndex = -1;
 
-            UpdateTextBoxes(_currentCustomer);
-
-            if (CustomersListBox.Items.Count == 0)
+            if (CustomersListBox.SelectedIndex != -1)
+            {
+                _currentCustomer = _customers[CustomersListBox.SelectedIndex];
+                UpdateTextBoxes(_currentCustomer);
+            }
+            else
+            {
                 ClearTextBoxes();
+            }
         }
+        
 
         /// <summary>
         /// Изменение имени пользователя, когда изменяется имя в FullNameTextBox.
