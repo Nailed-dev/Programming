@@ -97,7 +97,35 @@ namespace ObjectOrientedPractics.View.Tabs
                 ClearTextBoxes();
             }
         }
-        
+
+        /// <summary>
+        /// Обновляет данные в списке CustomersListBox.
+        /// </summary>
+        /// <param name="index">Индекс выбранного элемента.</param>
+        private void UpdateListBox(int index)
+        {
+            List<Customer> customers = Customers;
+
+            CustomersListBox.Items.Clear();
+
+            foreach (var customer in customers)
+            {
+                if (customer.Fullname != "")
+                {
+                    CustomersListBox.Items.Add(customer.Fullname);
+                }
+                else
+                {
+                    CustomersListBox.Items.Add($"Customer {customer.Id}");
+                }
+            }
+
+            if (-1 <= index && index < CustomersListBox.Items.Count)
+            {
+                CustomersListBox.SelectedIndex = index;
+            }
+        }
+
 
         /// <summary>
         /// Изменение имени пользователя, когда изменяется имя в FullNameTextBox.
@@ -132,7 +160,9 @@ namespace ObjectOrientedPractics.View.Tabs
             _currentCustomer = _customers[index];
             UpdateTextBoxes(_currentCustomer);
         }
-
-        
+        /// <summary>
+        /// Возвращает и задает коллекцию покупателей.
+        /// </summary>
+        public List<Customer> Customers { get; set; }
     }
 }

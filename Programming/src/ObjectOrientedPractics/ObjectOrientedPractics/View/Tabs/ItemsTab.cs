@@ -46,9 +46,9 @@ namespace ObjectOrientedPractics.View.Tabs
         private void AddButton_Click(object sender, EventArgs e)
         {
             _currentItem = new Item("Empty item", "Empty description", 0, "Empty category");
-            _items.Add(_currentItem);
+            Items.Add(_currentItem);
             ItemsListBox.Items.Add(_currentItem.Name);
-            ItemsListBox.SelectedIndex = _items.Count - 1;
+            ItemsListBox.SelectedIndex = Items.Count - 1;
             UpdateTextBoxes(_currentItem);
         }
 
@@ -62,6 +62,7 @@ namespace ObjectOrientedPractics.View.Tabs
             CostTextBox.Text = item.Cost.ToString();
             NameTextBox.Text = item.Name;
             DescriptionTextBox.Text = item.Info;
+            
         }
 
         /// <summary>
@@ -71,10 +72,38 @@ namespace ObjectOrientedPractics.View.Tabs
         {
             int index = ItemsListBox.SelectedIndex;
             if (index == -1) return;
-            _currentItem = _items[index];
+            _currentItem = Items[index];
             ItemCategoryComboBox.Text = _currentItem.Category;
             UpdateTextBoxes(_currentItem);
 
+        }
+
+        /// <summary>
+        /// Обновляет данные в списке ItemsListBox.
+        /// </summary>
+        /// <param name="index">Индекс выбранного элемента.</param>
+        private void UpdateListBox(int index)
+        {
+            List<Item> items = Items;
+
+            ItemsListBox.Items.Clear();
+
+            foreach (var item in items)
+            {
+                if (item.Name != "")
+                {
+                    ItemsListBox.Items.Add(item.Name);
+                }
+                else
+                {
+                    ItemsListBox.Items.Add($"Item {item.Id}");
+                }
+            }
+
+            if (-1 <= index && index < ItemsListBox.Items.Count)
+            {
+                ItemsListBox.SelectedIndex = index;
+            }
         }
 
         /// <summary>
@@ -84,7 +113,7 @@ namespace ObjectOrientedPractics.View.Tabs
         {
             if (ItemsListBox.Items.Count == 0) return;
             int index = ItemsListBox.SelectedIndex;
-            _items.RemoveAt(index);
+            Items.RemoveAt(index);
             ItemsListBox.Items.RemoveAt(index);
 
             if (ItemsListBox.Items.Count > index)
@@ -99,6 +128,8 @@ namespace ObjectOrientedPractics.View.Tabs
             if (ItemsListBox.Items.Count == 0)
                 ClearTextBoxes();
         }
+
+
 
         /// <summary>
         /// Очистка текстбоксов.
@@ -195,6 +226,11 @@ namespace ObjectOrientedPractics.View.Tabs
                 ItemCategoryComboBox.BackColor = Colors.ErrorColor;
             }
         }
-            
+
+        /// <summary>
+        /// Возвращает и задает коллекцию товаров.
+        /// </summary>
+        public List<Item> Items { get; set; }
+
     }
 }
