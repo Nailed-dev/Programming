@@ -37,7 +37,7 @@ namespace ObjectOrientedPractics.View.Tabs
                 ItemCategoryComboBox.Items.Add(item);
             }
 
-            
+
         }
 
         /// <summary>
@@ -46,9 +46,9 @@ namespace ObjectOrientedPractics.View.Tabs
         private void AddButton_Click(object sender, EventArgs e)
         {
             _currentItem = new Item("Empty item", "Empty description", 0, "Empty category");
-            Items.Add(_currentItem);
+            _items.Add(_currentItem);
             ItemsListBox.Items.Add(_currentItem.Name);
-            ItemsListBox.SelectedIndex = Items.Count - 1;
+            ItemsListBox.SelectedIndex = _items.Count - 1;
             UpdateTextBoxes(_currentItem);
         }
 
@@ -62,7 +62,7 @@ namespace ObjectOrientedPractics.View.Tabs
             CostTextBox.Text = item.Cost.ToString();
             NameTextBox.Text = item.Name;
             DescriptionTextBox.Text = item.Info;
-            
+
         }
 
         /// <summary>
@@ -72,7 +72,7 @@ namespace ObjectOrientedPractics.View.Tabs
         {
             int index = ItemsListBox.SelectedIndex;
             if (index == -1) return;
-            _currentItem = Items[index];
+            _currentItem = _items[index];
             ItemCategoryComboBox.Text = _currentItem.Category;
             UpdateTextBoxes(_currentItem);
 
@@ -84,7 +84,7 @@ namespace ObjectOrientedPractics.View.Tabs
         /// <param name="index">Индекс выбранного элемента.</param>
         private void UpdateListBox(int index)
         {
-            List<Item> items = Items;
+            List<Item> items = _items;
 
             ItemsListBox.Items.Clear();
 
@@ -113,7 +113,7 @@ namespace ObjectOrientedPractics.View.Tabs
         {
             if (ItemsListBox.Items.Count == 0) return;
             int index = ItemsListBox.SelectedIndex;
-            Items.RemoveAt(index);
+            _items.RemoveAt(index);
             ItemsListBox.Items.RemoveAt(index);
 
             if (ItemsListBox.Items.Count > index)
@@ -144,15 +144,16 @@ namespace ObjectOrientedPractics.View.Tabs
             CostTextBox.BackColor = Colors.NormalColor;
             NameTextBox.BackColor = Colors.NormalColor;
             DescriptionTextBox.BackColor = Colors.NormalColor;
-            
+
         }
 
         /// <summary>
-        /// Извенение цены товара, когда в CostTextBox меняется значение.
+        /// Изменение цены товара, когда в CostTextBox меняется значение.
         /// </summary>
         private void CostTextBox_TextChanged(object sender, EventArgs e)
         {
-            if (Items.Count == 0) return;
+            if (_items.Count == 0) return;
+            if (_currentItem == null) return;
 
             if (CostTextBox.Text == "")
             {
@@ -172,11 +173,12 @@ namespace ObjectOrientedPractics.View.Tabs
         }
 
         /// <summary>
-        /// Извенение название товара, когда в NameTextBox меняется значение.
+        /// Изменение названия товара, когда в NameTextBox меняется значение.
         /// </summary>
         private void NameTextBox_TextChanged(object sender, EventArgs e)
         {
             if (_items.Count == 0) return;
+            if (_currentItem == null) return;
 
             try
             {
@@ -191,13 +193,14 @@ namespace ObjectOrientedPractics.View.Tabs
         }
 
         /// <summary>
-        /// Извенение описания товара, когда в DescriptionTextBox меняется значение.
+        /// Изменение описания товара, когда в DescriptionTextBox меняется значение.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void DescriptionTextBox_TextChanged(object sender, EventArgs e)
         {
-            if (Items.Count == 0) return;
+            if (_items.Count == 0) return;
+            if (_currentItem == null) return;
 
             try
             {
@@ -210,7 +213,7 @@ namespace ObjectOrientedPractics.View.Tabs
             }
         }
 
-        
+
         /// <summary>
         /// Создает и сохраняет категорию товара.
         /// </summary>
@@ -219,7 +222,8 @@ namespace ObjectOrientedPractics.View.Tabs
         private void ItemCategoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (ItemsListBox.SelectedIndex == -1) return;
-            
+            if (_currentItem == null) return;
+
             try
             {
                 _currentItem.Category = ItemCategoryComboBox.SelectedItem.ToString();
@@ -234,7 +238,10 @@ namespace ObjectOrientedPractics.View.Tabs
         /// <summary>
         /// Возвращает и задает коллекцию товаров.
         /// </summary>
-        public List<Item> Items { get; set; }
-
+        public List<Item> Items
+        {
+            get { return _items; }
+            set { _items = value; }
+        }
     }
 }

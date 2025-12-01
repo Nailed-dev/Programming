@@ -98,24 +98,26 @@
             // 
             // AddButton
             // 
+            AddButton.BackColor = SystemColors.Control;
             AddButton.Dock = DockStyle.Fill;
             AddButton.Location = new Point(3, 3);
             AddButton.Name = "AddButton";
             AddButton.Size = new Size(163, 99);
             AddButton.TabIndex = 0;
             AddButton.Text = "Add";
-            AddButton.UseVisualStyleBackColor = true;
+            AddButton.UseVisualStyleBackColor = false;
             AddButton.Click += AddButton_Click;
             // 
             // RemoveButton
             // 
+            RemoveButton.BackColor = SystemColors.Control;
             RemoveButton.Dock = DockStyle.Fill;
             RemoveButton.Location = new Point(172, 3);
             RemoveButton.Name = "RemoveButton";
             RemoveButton.Size = new Size(163, 99);
             RemoveButton.TabIndex = 1;
             RemoveButton.Text = "Remove";
-            RemoveButton.UseVisualStyleBackColor = true;
+            RemoveButton.UseVisualStyleBackColor = false;
             RemoveButton.Click += RemoveButton_Click_1;
             // 
             // ItemsListBox
