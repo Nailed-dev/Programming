@@ -2,6 +2,9 @@
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup />
   <ItemGroup>
+    <Compile Update="View\CartsTab.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="View\Controls\AddressControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
