@@ -152,7 +152,7 @@ namespace ObjectOrientedPractics.View.Tabs
         /// </summary>
         private void CostTextBox_TextChanged(object sender, EventArgs e)
         {
-            if (_items.Count == 0) return;
+            if (Items.Count == 0) return;
 
             if (CostTextBox.Text == "")
             {
@@ -197,7 +197,7 @@ namespace ObjectOrientedPractics.View.Tabs
         /// <param name="e"></param>
         private void DescriptionTextBox_TextChanged(object sender, EventArgs e)
         {
-            if (_items.Count == 0) return;
+            if (Items.Count == 0) return;
 
             try
             {
@@ -211,7 +211,11 @@ namespace ObjectOrientedPractics.View.Tabs
         }
 
         
-
+        /// <summary>
+        /// Создает и сохраняет категорию товара.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ItemCategoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (ItemsListBox.SelectedIndex == -1) return;

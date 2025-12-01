@@ -102,6 +102,7 @@ namespace ObjectOrientedPractics.Model
             set
             {
                 ValueValidator.AssertStringOnLength(value, 100, nameof(Street));
+                _street = value;
             }
         }
 

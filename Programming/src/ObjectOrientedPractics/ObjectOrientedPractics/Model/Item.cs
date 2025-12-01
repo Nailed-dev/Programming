@@ -44,8 +44,6 @@ namespace ObjectOrientedPractics.Model
         /// Возвращает и задаёт название товара.
         /// </summary>
         /// <exception cref="ArgumentException">Название товара должно иметь меньше 200 символов.</exception>
-        /// 
-        
         public string Name
         {
             get
