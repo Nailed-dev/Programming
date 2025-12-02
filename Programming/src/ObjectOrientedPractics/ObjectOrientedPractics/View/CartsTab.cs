@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using ObjectOrientedPractics.Model;
 using ObjectOrientedPractics.Services;
 using ObjectOrientedPractics.Model.Enums;
+using ObjectOrientedPractics.View.Tabs;
 
 namespace ObjectOrientedPractics.View
 {
@@ -23,6 +24,7 @@ namespace ObjectOrientedPractics.View
         public CartsTab()
         {
             InitializeComponent();
+            
         }
 
 
@@ -57,7 +59,7 @@ namespace ObjectOrientedPractics.View
             {
                 if (item.Name != "")
                 {
-                    ItemsListBox.Items.Add(item);
+                    ItemsListBox.Items.Add(item.Name);
                 }
                 else
                 {
@@ -80,7 +82,7 @@ namespace ObjectOrientedPractics.View
             _currentCustomer = Customers[CustomersComboBox.SelectedIndex];
             var items = _currentCustomer.Cart.Items;
 
-            if (Items == null) return;
+            if (items == null) return;
 
             foreach (var item in items)
             {

@@ -146,7 +146,7 @@ namespace ObjectOrientedPractics.View.Tabs
                 FullNameTextBox.BackColor = Colors.ErrorColor;
             }
         }
-
+        
         
         
 
