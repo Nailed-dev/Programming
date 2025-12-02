@@ -92,11 +92,12 @@ namespace ObjectOrientedPractics.Model
         /// </summary>
         /// <param name="fullname"></param>
         /// <param name="address"></param>
-        public Customer(string fullname, Address address)
+        public Customer(string fullname, Address address, Cart cart)
         {
             Fullname = fullname;
             Address = address;
             _id = IdGenerator.GetNextId();
+            Cart = cart;
         }
 
         /// <summary>

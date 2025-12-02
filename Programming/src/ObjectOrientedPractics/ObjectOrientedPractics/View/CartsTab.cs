@@ -16,11 +16,24 @@ namespace ObjectOrientedPractics.View
 {
     public partial class CartsTab : UserControl
     {
+        /// <summary>
+        /// Текущий покупатель.
+        /// </summary>
         private Customer _currentCustomer;
 
+        /// <summary>
+        /// Список товаров.
+        /// </summary>
         private List<Item> _items = new();
 
+        /// <summary>
+        /// Список покупателей.
+        /// </summary>
         private List<Customer> _customers = new();
+
+        /// <summary>
+        /// Создает экземпляр класса <see cref="CartsTab"/>.
+        /// </summary>
         public CartsTab()
         {
             InitializeComponent();
@@ -28,6 +41,9 @@ namespace ObjectOrientedPractics.View
         }
 
 
+        /// <summary>
+        /// Возвращает и задает список товаров.
+        /// </summary>
         public List<Item> Items
         {
             get
@@ -40,6 +56,9 @@ namespace ObjectOrientedPractics.View
             }
         }
 
+        /// <summary>
+        /// Возвращает и задает список покупателей.
+        /// </summary>
         public List<Customer> Customers
         {
             get
@@ -51,6 +70,11 @@ namespace ObjectOrientedPractics.View
                 _customers = value;
             }
         }
+
+        /// <summary>
+        /// Обновляет данные в списке <see cref="ItemsListBox"/>
+        /// </summary>
+        /// <param name="index">Индекс выбранного элемента.</param>
         private void UpdateItemsListBox(int index)
         {
             var items = Items;
@@ -92,7 +116,7 @@ namespace ObjectOrientedPractics.View
                 }
                 else
                 {
-                    CartListBox.Items.Add($"Item {item.Id}");
+                    CartListBox.Items.Add($"Item {item.Id}");              
                 }
             }
             if (-1 <= index && index < CustomersComboBox.Items.Count)
@@ -180,6 +204,8 @@ namespace ObjectOrientedPractics.View
             if (_currentCustomer == null) return;
 
             _currentCustomer.Orders.Add(new Order(IdGenerator.GetNextId(), OrderStatus.New, DateTime.Now, _currentCustomer.Address, _currentCustomer.Cart));
+            _currentCustomer.Cart = new Cart();
+            UpdateCartListBox(CustomersComboBox.SelectedIndex);
         }
 
     }

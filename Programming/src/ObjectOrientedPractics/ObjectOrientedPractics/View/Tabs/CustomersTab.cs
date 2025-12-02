@@ -16,10 +16,7 @@ namespace ObjectOrientedPractics.View.Tabs
 {
     public partial class CustomersTab : UserControl
     {
-        /// <summary>
-        /// Список всех пользователей.
-        /// </summary>
-        private List<Customer> _customers = new List<Customer>();
+        
 
         /// <summary>
         /// Выбранный пользователь.
@@ -63,10 +60,10 @@ namespace ObjectOrientedPractics.View.Tabs
         /// </summary>
         private void AddButton_Click(object sender, EventArgs e)
         {
-            _currentCustomer = new Customer("Empy user", new Address());
-            _customers.Add(_currentCustomer);
+            _currentCustomer = new Customer("Empy user", new Address(), new Cart());
+            Customers.Add(_currentCustomer);
             CustomersListBox.Items.Add(_currentCustomer.Fullname);
-            CustomersListBox.SelectedIndex = _customers.Count - 1;
+            CustomersListBox.SelectedIndex = Customers.Count - 1;
             UpdateTextBoxes(_currentCustomer);
         }
 
@@ -77,7 +74,7 @@ namespace ObjectOrientedPractics.View.Tabs
         {
             if (CustomersListBox.Items.Count == 0) return;
             int index = CustomersListBox.SelectedIndex;
-            _customers.RemoveAt(index);
+            Customers.RemoveAt(index);
             CustomersListBox.Items.RemoveAt(index);
 
             if (CustomersListBox.Items.Count > index)
@@ -89,7 +86,7 @@ namespace ObjectOrientedPractics.View.Tabs
 
             if (CustomersListBox.SelectedIndex != -1)
             {
-                _currentCustomer = _customers[CustomersListBox.SelectedIndex];
+                _currentCustomer = Customers[CustomersListBox.SelectedIndex];
                 UpdateTextBoxes(_currentCustomer);
             }
             else
@@ -132,13 +129,13 @@ namespace ObjectOrientedPractics.View.Tabs
         /// </summary>
         private void FullNameTextBox_TextChanged(object sender, EventArgs e)
         {
-            if (_customers.Count == 0) return;
+            if (Customers.Count == 0) return;
 
             try
             {
                 FullNameTextBox.BackColor = Colors.NormalColor;
                 _currentCustomer.Fullname = FullNameTextBox.Text;
-                CustomersListBox.Items[_customers.IndexOf(_currentCustomer)] = _currentCustomer.Fullname;
+                CustomersListBox.Items[Customers.IndexOf(_currentCustomer)] = _currentCustomer.Fullname;
             }
             catch
             {
@@ -157,7 +154,7 @@ namespace ObjectOrientedPractics.View.Tabs
         {
             int index = CustomersListBox.SelectedIndex;
             if (index == -1) return;
-            _currentCustomer = _customers[index];
+            _currentCustomer = Customers[index];
             UpdateTextBoxes(_currentCustomer);
         }
         /// <summary>
