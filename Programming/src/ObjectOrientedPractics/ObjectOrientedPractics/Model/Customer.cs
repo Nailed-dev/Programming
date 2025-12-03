@@ -98,6 +98,7 @@ namespace ObjectOrientedPractics.Model
             Address = address;
             _id = IdGenerator.GetNextId();
             Cart = cart;
+            Orders = new List<Order>();
         }
 
         /// <summary>

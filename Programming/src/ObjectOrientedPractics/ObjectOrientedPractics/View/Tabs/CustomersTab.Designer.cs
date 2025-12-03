@@ -192,7 +192,7 @@
             // IdTextBox
             // 
             IdTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            IdTextBox.BackColor = Color.White;
+            IdTextBox.BackColor = SystemColors.Control;
             IdTextBox.BorderStyle = BorderStyle.FixedSingle;
             IdTextBox.Location = new Point(131, 74);
             IdTextBox.MaximumSize = new Size(500, 500);

@@ -54,3 +54,4 @@ C:\Users\Redmi\OneDrive\Desktop\Programming\src\ObjectOrientedPractics\ObjectOri
 C:\Users\Redmi\OneDrive\Desktop\Programming\src\ObjectOrientedPractics\ObjectOrientedPractics\obj\Debug\net8.0-windows\ObjectOrientedPractics.View.Tabs.CustomersTab.resources
 C:\Users\Redmi\OneDrive\Desktop\Programming\src\ObjectOrientedPractics\ObjectOrientedPractics\obj\Debug\net8.0-windows\ObjectOrientedPractics.View.Controls.AddressControl.resources
 C:\Users\Redmi\OneDrive\Desktop\Programming\src\ObjectOrientedPractics\ObjectOrientedPractics\obj\Debug\net8.0-windows\ObjectOrientedPractics.View.CartsTab.resources
+C:\Users\Redmi\OneDrive\Desktop\Programming\src\ObjectOrientedPractics\ObjectOrientedPractics\obj\Debug\net8.0-windows\ObjectOrientedPractics.View.Tabs.OrdersTab.resources

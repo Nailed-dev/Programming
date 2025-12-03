@@ -25,6 +25,7 @@ namespace ObjectOrientedPractics
             CustomersTab.Customers = Store.Customers;
             CartsTab.Items = Store.Items;
             CartsTab.Customers = Store.Customers;
+            OrdersTab.Customers = Store.Customers;
            
         }
 
@@ -43,6 +44,7 @@ namespace ObjectOrientedPractics
         private void SelectedTabChanged(object sender, EventArgs e)
         {
             CartsTab.RefreshData();
+            OrdersTab.RefreshData();
 
         }
     }
