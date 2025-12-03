@@ -16,10 +16,7 @@ namespace ObjectOrientedPractics.View.Tabs
 {
     public partial class ItemsTab : UserControl
     {
-        /// <summary>
-        /// Список товаров.
-        /// </summary>
-        private List<Item> _items = new List<Item>();
+        
 
         /// <summary>
         /// Выбранный товар.
@@ -37,7 +34,7 @@ namespace ObjectOrientedPractics.View.Tabs
                 ItemCategoryComboBox.Items.Add(item);
             }
 
-            
+
         }
 
         /// <summary>
@@ -62,7 +59,7 @@ namespace ObjectOrientedPractics.View.Tabs
             CostTextBox.Text = item.Cost.ToString();
             NameTextBox.Text = item.Name;
             DescriptionTextBox.Text = item.Info;
-            
+
         }
 
         /// <summary>
@@ -144,15 +141,16 @@ namespace ObjectOrientedPractics.View.Tabs
             CostTextBox.BackColor = Colors.NormalColor;
             NameTextBox.BackColor = Colors.NormalColor;
             DescriptionTextBox.BackColor = Colors.NormalColor;
-            
+
         }
 
         /// <summary>
-        /// Извенение цены товара, когда в CostTextBox меняется значение.
+        /// Изменение цены товара, когда в CostTextBox меняется значение.
         /// </summary>
         private void CostTextBox_TextChanged(object sender, EventArgs e)
         {
             if (Items.Count == 0) return;
+            if (_currentItem == null) return;
 
             if (CostTextBox.Text == "")
             {
@@ -172,17 +170,18 @@ namespace ObjectOrientedPractics.View.Tabs
         }
 
         /// <summary>
-        /// Извенение название товара, когда в NameTextBox меняется значение.
+        /// Изменение названия товара, когда в NameTextBox меняется значение.
         /// </summary>
         private void NameTextBox_TextChanged(object sender, EventArgs e)
         {
-            if (_items.Count == 0) return;
+            if (Items.Count == 0) return;
+            if (_currentItem == null) return;
 
             try
             {
                 NameTextBox.BackColor = Colors.NormalColor;
                 _currentItem.Name = NameTextBox.Text;
-                ItemsListBox.Items[_items.IndexOf(_currentItem)] = _currentItem.Name;
+                ItemsListBox.Items[Items.IndexOf(_currentItem)] = _currentItem.Name;
             }
             catch
             {
@@ -191,13 +190,14 @@ namespace ObjectOrientedPractics.View.Tabs
         }
 
         /// <summary>
-        /// Извенение описания товара, когда в DescriptionTextBox меняется значение.
+        /// Изменение описания товара, когда в DescriptionTextBox меняется значение.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void DescriptionTextBox_TextChanged(object sender, EventArgs e)
         {
             if (Items.Count == 0) return;
+            if (_currentItem == null) return;
 
             try
             {
@@ -210,7 +210,7 @@ namespace ObjectOrientedPractics.View.Tabs
             }
         }
 
-        
+
         /// <summary>
         /// Создает и сохраняет категорию товара.
         /// </summary>
@@ -219,7 +219,8 @@ namespace ObjectOrientedPractics.View.Tabs
         private void ItemCategoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (ItemsListBox.SelectedIndex == -1) return;
-            
+            if (_currentItem == null) return;
+
             try
             {
                 _currentItem.Category = ItemCategoryComboBox.SelectedItem.ToString();
@@ -234,7 +235,9 @@ namespace ObjectOrientedPractics.View.Tabs
         /// <summary>
         /// Возвращает и задает коллекцию товаров.
         /// </summary>
-        public List<Item> Items { get; set; }
-
+        public List<Item> Items
+        {
+            get; set;
+        }
     }
 }
