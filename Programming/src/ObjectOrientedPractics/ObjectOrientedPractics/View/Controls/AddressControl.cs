@@ -19,6 +19,8 @@ namespace ObjectOrientedPractics.View.Controls
     {
         private Address _address;
 
+        private bool _readOnly;
+
         internal Address Address
         {
             get
@@ -31,7 +33,29 @@ namespace ObjectOrientedPractics.View.Controls
                 UpdateAddressTextBoxes(_address);
             }
         }
-        
+
+        public bool ReadOnly
+        {
+            get
+            {
+                return _readOnly;
+            }
+            set
+            {
+                _readOnly = value;
+
+                if (value)
+                {
+                    AddressIndexTextBox.ReadOnly = true;
+                    AddressCountryTextBox.ReadOnly = true;
+                    AddressCityTextBox.ReadOnly = true;
+                    AddressStreetTextBox.ReadOnly = true;
+                    AddressBuildingTextBox.ReadOnly = true;
+                    AddressApartmentTextBox.ReadOnly = true;
+                }
+            }
+        }
+
         public AddressControl()
         {
             InitializeComponent();

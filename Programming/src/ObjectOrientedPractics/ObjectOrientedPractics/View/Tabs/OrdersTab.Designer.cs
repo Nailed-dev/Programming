@@ -41,7 +41,7 @@
             label1 = new Label();
             panel2 = new Panel();
             AmountLabel = new Label();
-            label7 = new Label();
+            AmountTextLabel = new Label();
             OrderItemsListBox = new ListBox();
             label6 = new Label();
             OrderAddressControl = new ObjectOrientedPractics.View.Controls.AddressControl();
@@ -100,6 +100,7 @@
             OrdersDataGridView.RowHeadersWidth = 72;
             OrdersDataGridView.Size = new Size(857, 1217);
             OrdersDataGridView.TabIndex = 1;
+            OrdersDataGridView.SelectionChanged += OrdersDataGridView_SelectionChanged;
             // 
             // Id
             // 
@@ -163,7 +164,7 @@
             // 
             panel2.BackColor = Color.White;
             panel2.Controls.Add(AmountLabel);
-            panel2.Controls.Add(label7);
+            panel2.Controls.Add(AmountTextLabel);
             panel2.Controls.Add(OrderItemsListBox);
             panel2.Controls.Add(label6);
             panel2.Controls.Add(OrderAddressControl);
@@ -182,26 +183,28 @@
             // 
             // AmountLabel
             // 
-            AmountLabel.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            AmountLabel.AutoSize = true;
-            AmountLabel.Font = new Font("Segoe UI Black", 18F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            AmountLabel.Location = new Point(612, 908);
+            AmountLabel.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            AmountLabel.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            AmountLabel.Location = new Point(20, 911);
+            AmountLabel.Margin = new Padding(6, 0, 6, 0);
             AmountLabel.Name = "AmountLabel";
-            AmountLabel.Size = new Size(246, 65);
-            AmountLabel.TabIndex = 11;
-            AmountLabel.Text = "4, 990.90";
-            AmountLabel.TabIndexChanged += OrdersDataGridView_SelectionChanged;
+            AmountLabel.RightToLeft = RightToLeft.No;
+            AmountLabel.Size = new Size(824, 75);
+            AmountLabel.TabIndex = 13;
+            AmountLabel.Text = "0,00";
+            AmountLabel.TextAlign = ContentAlignment.MiddleRight;
             // 
-            // label7
+            // AmountTextLabel
             // 
-            label7.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            label7.AutoSize = true;
-            label7.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            label7.Location = new Point(731, 876);
-            label7.Name = "label7";
-            label7.Size = new Size(118, 32);
-            label7.TabIndex = 10;
-            label7.Text = "Amount:";
+            AmountTextLabel.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            AmountTextLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            AmountTextLabel.Location = new Point(20, 875);
+            AmountTextLabel.Margin = new Padding(6, 0, 6, 0);
+            AmountTextLabel.Name = "AmountTextLabel";
+            AmountTextLabel.Size = new Size(824, 32);
+            AmountTextLabel.TabIndex = 12;
+            AmountTextLabel.Text = "Amount:";
+            AmountTextLabel.TextAlign = ContentAlignment.MiddleRight;
             // 
             // OrderItemsListBox
             // 
@@ -227,16 +230,18 @@
             // 
             OrderAddressControl.Location = new Point(20, 254);
             OrderAddressControl.Name = "OrderAddressControl";
+            OrderAddressControl.ReadOnly = false;
             OrderAddressControl.Size = new Size(837, 309);
             OrderAddressControl.TabIndex = 7;
             // 
             // OrderStatusComboBox
             // 
             OrderStatusComboBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            OrderStatusComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             OrderStatusComboBox.FormattingEnabled = true;
             OrderStatusComboBox.Location = new Point(156, 180);
             OrderStatusComboBox.Name = "OrderStatusComboBox";
-            OrderStatusComboBox.Size = new Size(299, 40);
+            OrderStatusComboBox.Size = new Size(353, 40);
             OrderStatusComboBox.TabIndex = 6;
             OrderStatusComboBox.SelectedIndexChanged += OrderStatusComboBox_SelectedIndexChanged;
             // 
@@ -247,7 +252,7 @@
             OrderDateTextBox.Location = new Point(156, 116);
             OrderDateTextBox.Name = "OrderDateTextBox";
             OrderDateTextBox.ReadOnly = true;
-            OrderDateTextBox.Size = new Size(299, 39);
+            OrderDateTextBox.Size = new Size(353, 39);
             OrderDateTextBox.TabIndex = 5;
             // 
             // OrderIdTextBox
@@ -257,7 +262,7 @@
             OrderIdTextBox.Location = new Point(156, 51);
             OrderIdTextBox.Name = "OrderIdTextBox";
             OrderIdTextBox.ReadOnly = true;
-            OrderIdTextBox.Size = new Size(299, 39);
+            OrderIdTextBox.Size = new Size(353, 39);
             OrderIdTextBox.TabIndex = 4;
             // 
             // label5
@@ -346,9 +351,9 @@
         private ComboBox OrderStatusComboBox;
         private TextBox OrderDateTextBox;
         private Controls.AddressControl OrderAddressControl;
-        private Label label7;
         private ListBox OrderItemsListBox;
         private Label label6;
         private Label AmountLabel;
+        private Label AmountTextLabel;
     }
 }

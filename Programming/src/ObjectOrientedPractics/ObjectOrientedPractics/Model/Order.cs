@@ -47,7 +47,7 @@ namespace ObjectOrientedPractics.Model
         public Order(int id, OrderStatus orderStatus, DateTime date, Address address, Cart cart)
         {
             _id = id;
-            orderStatus = orderStatus;
+            OrderStatus = orderStatus;
             Date = date;
             Address = address;
             Items = cart.Items;
