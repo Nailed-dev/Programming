@@ -17,10 +17,20 @@ namespace ObjectOrientedPractics.View.Controls
 {
     public partial class AddressControl : UserControl
     {
+
+        /// <summary>
+        /// Адрес.
+        /// </summary>
         private Address _address;
 
+        /// <summary>
+        /// Только для чтения.
+        /// </summary>
         private bool _readOnly;
 
+        /// <summary>
+        /// Возвращает и задает адрес.
+        /// </summary>
         internal Address Address
         {
             get
@@ -34,6 +44,10 @@ namespace ObjectOrientedPractics.View.Controls
             }
         }
 
+        /// <summary>
+        /// Возвращает и задает, значение, указывающее, может ли 
+        /// пользователь менять данные в элементе управления.
+        /// </summary>
         public bool ReadOnly
         {
             get
@@ -56,12 +70,19 @@ namespace ObjectOrientedPractics.View.Controls
             }
         }
 
+        /// <summary>
+        /// Создает экземпляр класса <see cref="AddressControl"/>.
+        /// </summary>
         public AddressControl()
         {
             InitializeComponent();
             Address = new Address();
         }
 
+        /// <summary>
+        /// Обновляет информацию об адресе.
+        /// </summary>
+        /// <param name="address"></param>
         public void UpdateAddressTextBoxes(Address address)
         {
             AddressIndexTextBox.Text = address.Index.ToString();
@@ -71,6 +92,7 @@ namespace ObjectOrientedPractics.View.Controls
             AddressBuildingTextBox.Text = address.Building;
             AddressApartmentTextBox.Text = address.Apartment;
         }
+
 
         private void AddressIndexTextBoxes_TextChanged(object sender, EventArgs e)
         {
