@@ -1,7 +1,7 @@
 ﻿
 namespace ObjectOrientedPractics.Model.Enums
 {
-    internal enum Category
+    public enum Category
     {
         /// <summary>
         /// Электроника.

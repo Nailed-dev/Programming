@@ -5,6 +5,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using ObjectOrientedPractics.Services;
+using ObjectOrientedPractics.Model.Enums;
 
 namespace ObjectOrientedPractics.Model
 {
@@ -38,7 +39,7 @@ namespace ObjectOrientedPractics.Model
         /// </summary>
         public int Id { get { return _id; } }
 
-        public string Category { get; set; }
+        public Category Category { get; set; }
 
         /// <summary>
         /// Возвращает и задаёт название товара.
@@ -108,7 +109,7 @@ namespace ObjectOrientedPractics.Model
         /// <param name="info">Описание товара.</param>
         /// <param name="cost">Цена товара.</param>
         /// <param name="category">Категория товара.</param>
-        public Item(string name, string info, double cost, string category)
+        public Item(string name, string info, double cost, Category category)
         {
             Name = name;
             Info = info;
