@@ -206,10 +206,18 @@ namespace ObjectOrientedPractics.View
         {
             if (_currentCustomer == null) return;
 
-            _currentCustomer.Orders.Add(new Order(IdGenerator.GetNextId(), OrderStatus.New, DateTime.Now, _currentCustomer.Address, _currentCustomer.Cart));
+            Order order;
+            if (_currentCustomer.IsPriority)
+            {
+                order = new PriorityOrder(IdGenerator.GetNextId(), OrderStatus.New, _currentCustomer.Address, _currentCustomer.Cart.Items, DateTime.Today, "", _currentCustomer.Cart);
+            }
+            else
+            {
+                order = new Order(IdGenerator.GetNextId(), OrderStatus.New, DateTime.Now, _currentCustomer.Address, _currentCustomer.Cart);
+            }
+            _currentCustomer.Orders.Add(order);
             _currentCustomer.Cart = new Cart();
             UpdateCartListBox(CustomersComboBox.SelectedIndex);
-            UpdateAmountLabel();
         }
 
     }

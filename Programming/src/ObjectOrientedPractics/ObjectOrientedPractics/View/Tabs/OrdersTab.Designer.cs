@@ -40,6 +40,10 @@
             Amount = new DataGridViewTextBoxColumn();
             label1 = new Label();
             panel2 = new Panel();
+            PriorityOptionsPanel = new Panel();
+            DeliveryTimeSelectedOrderComboBox = new ComboBox();
+            DeliveryTimeSelectedOrderLabel = new Label();
+            PriorityOptionsLabel = new Label();
             AmountLabel = new Label();
             AmountTextLabel = new Label();
             OrderItemsListBox = new ListBox();
@@ -58,6 +62,7 @@
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)OrdersDataGridView).BeginInit();
             panel2.SuspendLayout();
+            PriorityOptionsPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)cartBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)itemBindingSource).BeginInit();
             SuspendLayout();
@@ -74,7 +79,7 @@
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 1;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.Size = new Size(1733, 1280);
+            tableLayoutPanel1.Size = new Size(1900, 1280);
             tableLayoutPanel1.TabIndex = 0;
             // 
             // panel1
@@ -84,7 +89,7 @@
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(3, 3);
             panel1.Name = "panel1";
-            panel1.Size = new Size(860, 1274);
+            panel1.Size = new Size(944, 1274);
             panel1.TabIndex = 0;
             // 
             // OrdersDataGridView
@@ -98,7 +103,7 @@
             OrdersDataGridView.Name = "OrdersDataGridView";
             OrdersDataGridView.ReadOnly = true;
             OrdersDataGridView.RowHeadersWidth = 72;
-            OrdersDataGridView.Size = new Size(857, 1217);
+            OrdersDataGridView.Size = new Size(941, 1217);
             OrdersDataGridView.TabIndex = 1;
             OrdersDataGridView.SelectionChanged += OrdersDataGridView_SelectionChanged;
             // 
@@ -163,6 +168,7 @@
             // panel2
             // 
             panel2.BackColor = Color.White;
+            panel2.Controls.Add(PriorityOptionsPanel);
             panel2.Controls.Add(AmountLabel);
             panel2.Controls.Add(AmountTextLabel);
             panel2.Controls.Add(OrderItemsListBox);
@@ -176,10 +182,52 @@
             panel2.Controls.Add(label3);
             panel2.Controls.Add(label2);
             panel2.Dock = DockStyle.Fill;
-            panel2.Location = new Point(869, 3);
+            panel2.Location = new Point(953, 3);
             panel2.Name = "panel2";
-            panel2.Size = new Size(861, 1274);
+            panel2.Size = new Size(944, 1274);
             panel2.TabIndex = 1;
+            // 
+            // PriorityOptionsPanel
+            // 
+            PriorityOptionsPanel.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            PriorityOptionsPanel.Controls.Add(DeliveryTimeSelectedOrderComboBox);
+            PriorityOptionsPanel.Controls.Add(DeliveryTimeSelectedOrderLabel);
+            PriorityOptionsPanel.Controls.Add(PriorityOptionsLabel);
+            PriorityOptionsPanel.Location = new Point(573, 3);
+            PriorityOptionsPanel.Name = "PriorityOptionsPanel";
+            PriorityOptionsPanel.Size = new Size(368, 139);
+            PriorityOptionsPanel.TabIndex = 14;
+            // 
+            // DeliveryTimeSelectedOrderComboBox
+            // 
+            DeliveryTimeSelectedOrderComboBox.FormattingEnabled = true;
+            DeliveryTimeSelectedOrderComboBox.Location = new Point(190, 47);
+            DeliveryTimeSelectedOrderComboBox.Margin = new Padding(6);
+            DeliveryTimeSelectedOrderComboBox.Name = "DeliveryTimeSelectedOrderComboBox";
+            DeliveryTimeSelectedOrderComboBox.Size = new Size(172, 40);
+            DeliveryTimeSelectedOrderComboBox.TabIndex = 12;
+            DeliveryTimeSelectedOrderComboBox.SelectedIndexChanged += DeliveryTimeSelectedOrderComboBox_SelectedIndexChanged;
+            // 
+            // DeliveryTimeSelectedOrderLabel
+            // 
+            DeliveryTimeSelectedOrderLabel.AutoSize = true;
+            DeliveryTimeSelectedOrderLabel.Location = new Point(6, 50);
+            DeliveryTimeSelectedOrderLabel.Margin = new Padding(6, 0, 6, 0);
+            DeliveryTimeSelectedOrderLabel.Name = "DeliveryTimeSelectedOrderLabel";
+            DeliveryTimeSelectedOrderLabel.Size = new Size(166, 32);
+            DeliveryTimeSelectedOrderLabel.TabIndex = 11;
+            DeliveryTimeSelectedOrderLabel.Text = "Delivery Time:";
+            // 
+            // PriorityOptionsLabel
+            // 
+            PriorityOptionsLabel.AutoSize = true;
+            PriorityOptionsLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            PriorityOptionsLabel.Location = new Point(6, -3);
+            PriorityOptionsLabel.Margin = new Padding(6, 0, 6, 0);
+            PriorityOptionsLabel.Name = "PriorityOptionsLabel";
+            PriorityOptionsLabel.Size = new Size(197, 32);
+            PriorityOptionsLabel.TabIndex = 10;
+            PriorityOptionsLabel.Text = "Priority Options";
             // 
             // AmountLabel
             // 
@@ -189,7 +237,7 @@
             AmountLabel.Margin = new Padding(6, 0, 6, 0);
             AmountLabel.Name = "AmountLabel";
             AmountLabel.RightToLeft = RightToLeft.No;
-            AmountLabel.Size = new Size(824, 75);
+            AmountLabel.Size = new Size(907, 75);
             AmountLabel.TabIndex = 13;
             AmountLabel.Text = "0,00";
             AmountLabel.TextAlign = ContentAlignment.MiddleRight;
@@ -201,7 +249,7 @@
             AmountTextLabel.Location = new Point(20, 875);
             AmountTextLabel.Margin = new Padding(6, 0, 6, 0);
             AmountTextLabel.Name = "AmountTextLabel";
-            AmountTextLabel.Size = new Size(824, 32);
+            AmountTextLabel.Size = new Size(907, 32);
             AmountTextLabel.TabIndex = 12;
             AmountTextLabel.Text = "Amount:";
             AmountTextLabel.TextAlign = ContentAlignment.MiddleRight;
@@ -213,7 +261,7 @@
             OrderItemsListBox.IntegralHeight = false;
             OrderItemsListBox.Location = new Point(20, 566);
             OrderItemsListBox.Name = "OrderItemsListBox";
-            OrderItemsListBox.Size = new Size(824, 306);
+            OrderItemsListBox.Size = new Size(907, 306);
             OrderItemsListBox.TabIndex = 9;
             // 
             // label6
@@ -241,7 +289,7 @@
             OrderStatusComboBox.FormattingEnabled = true;
             OrderStatusComboBox.Location = new Point(156, 180);
             OrderStatusComboBox.Name = "OrderStatusComboBox";
-            OrderStatusComboBox.Size = new Size(353, 40);
+            OrderStatusComboBox.Size = new Size(397, 40);
             OrderStatusComboBox.TabIndex = 6;
             OrderStatusComboBox.SelectedIndexChanged += OrderStatusComboBox_SelectedIndexChanged;
             // 
@@ -252,7 +300,7 @@
             OrderDateTextBox.Location = new Point(156, 116);
             OrderDateTextBox.Name = "OrderDateTextBox";
             OrderDateTextBox.ReadOnly = true;
-            OrderDateTextBox.Size = new Size(353, 39);
+            OrderDateTextBox.Size = new Size(397, 39);
             OrderDateTextBox.TabIndex = 5;
             // 
             // OrderIdTextBox
@@ -262,7 +310,7 @@
             OrderIdTextBox.Location = new Point(156, 51);
             OrderIdTextBox.Name = "OrderIdTextBox";
             OrderIdTextBox.ReadOnly = true;
-            OrderIdTextBox.Size = new Size(353, 39);
+            OrderIdTextBox.Size = new Size(397, 39);
             OrderIdTextBox.TabIndex = 4;
             // 
             // label5
@@ -316,13 +364,15 @@
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(tableLayoutPanel1);
             Name = "OrdersTab";
-            Size = new Size(1733, 1280);
+            Size = new Size(1900, 1280);
             tableLayoutPanel1.ResumeLayout(false);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)OrdersDataGridView).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
+            PriorityOptionsPanel.ResumeLayout(false);
+            PriorityOptionsPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)cartBindingSource).EndInit();
             ((System.ComponentModel.ISupportInitialize)itemBindingSource).EndInit();
             ResumeLayout(false);
@@ -355,5 +405,9 @@
         private Label label6;
         private Label AmountLabel;
         private Label AmountTextLabel;
+        private Panel PriorityOptionsPanel;
+        private ComboBox DeliveryTimeSelectedOrderComboBox;
+        private Label DeliveryTimeSelectedOrderLabel;
+        private Label PriorityOptionsLabel;
     }
 }

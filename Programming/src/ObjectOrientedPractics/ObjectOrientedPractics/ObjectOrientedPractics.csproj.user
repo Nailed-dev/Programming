@@ -20,5 +20,8 @@
     <Compile Update="View\Tabs\OrdersTab.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="View\Tabs\PriorityOrdersTab.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
   </ItemGroup>
 </Project>
