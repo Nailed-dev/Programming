@@ -135,5 +135,26 @@ namespace ObjectOrientedPractics.Model
         /// Возвращает ID покупателя.
         /// </summary>
         public int Id { get { return _id; } }
+
+        /// <summary>
+        /// Возвращает общую стоимость товаров в заказе.
+        /// </summary>
+        public double AmountOrder
+        {
+            get
+            {
+                _amount = 0;
+
+                if (Items == null) return _amount;
+                
+                foreach (var item in _items)
+                {
+                    _amount += item.Cost;
+                }
+                return _amount;
+             }
+        }
     }
 }
+
+

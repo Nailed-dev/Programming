@@ -38,6 +38,7 @@
             panel4 = new Panel();
             tableLayoutPanel4 = new TableLayoutPanel();
             panel2 = new Panel();
+            IsPriorityCheckBox = new CheckBox();
             AddressControl = new ObjectOrientedPractics.View.Controls.AddressControl();
             IdTextBox = new TextBox();
             FullNameTextBox = new TextBox();
@@ -65,7 +66,7 @@
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 1;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.Size = new Size(1300, 1100);
+            tableLayoutPanel1.Size = new Size(1408, 1173);
             tableLayoutPanel1.TabIndex = 0;
             // 
             // panel1
@@ -77,7 +78,7 @@
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(3, 3);
             panel1.Name = "panel1";
-            panel1.Size = new Size(514, 1094);
+            panel1.Size = new Size(557, 1167);
             panel1.TabIndex = 0;
             // 
             // tableLayoutPanel2
@@ -89,11 +90,11 @@
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
             tableLayoutPanel2.Controls.Add(AddButton, 0, 0);
             tableLayoutPanel2.Controls.Add(RemoveButton, 1, 0);
-            tableLayoutPanel2.Location = new Point(3, 986);
+            tableLayoutPanel2.Location = new Point(3, 1052);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 1;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel2.Size = new Size(508, 105);
+            tableLayoutPanel2.Size = new Size(550, 112);
             tableLayoutPanel2.TabIndex = 2;
             // 
             // AddButton
@@ -102,7 +103,7 @@
             AddButton.Dock = DockStyle.Fill;
             AddButton.Location = new Point(3, 3);
             AddButton.Name = "AddButton";
-            AddButton.Size = new Size(163, 99);
+            AddButton.Size = new Size(177, 106);
             AddButton.TabIndex = 0;
             AddButton.Text = "Add";
             AddButton.UseVisualStyleBackColor = false;
@@ -112,9 +113,9 @@
             // 
             RemoveButton.BackColor = SystemColors.Control;
             RemoveButton.Dock = DockStyle.Fill;
-            RemoveButton.Location = new Point(172, 3);
+            RemoveButton.Location = new Point(186, 3);
             RemoveButton.Name = "RemoveButton";
-            RemoveButton.Size = new Size(163, 99);
+            RemoveButton.Size = new Size(177, 106);
             RemoveButton.TabIndex = 1;
             RemoveButton.Text = "Remove";
             RemoveButton.UseVisualStyleBackColor = false;
@@ -126,10 +127,9 @@
             CustomersListBox.BorderStyle = BorderStyle.FixedSingle;
             CustomersListBox.FormattingEnabled = true;
             CustomersListBox.IntegralHeight = false;
-            CustomersListBox.ItemHeight = 30;
-            CustomersListBox.Location = new Point(3, 39);
+            CustomersListBox.Location = new Point(3, 42);
             CustomersListBox.Name = "CustomersListBox";
-            CustomersListBox.Size = new Size(508, 934);
+            CustomersListBox.Size = new Size(550, 996);
             CustomersListBox.TabIndex = 1;
             CustomersListBox.SelectedIndexChanged += CustomersListBox_SelectedIndexChanged;
             // 
@@ -139,7 +139,7 @@
             label1.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
             label1.Location = new Point(3, 0);
             label1.Name = "label1";
-            label1.Size = new Size(122, 30);
+            label1.Size = new Size(139, 32);
             label1.TabIndex = 0;
             label1.Text = "Customers";
             // 
@@ -148,9 +148,9 @@
             panel4.BackColor = Color.White;
             panel4.Controls.Add(tableLayoutPanel4);
             panel4.Dock = DockStyle.Fill;
-            panel4.Location = new Point(523, 3);
+            panel4.Location = new Point(566, 3);
             panel4.Name = "panel4";
-            panel4.Size = new Size(774, 1094);
+            panel4.Size = new Size(839, 1167);
             panel4.TabIndex = 1;
             // 
             // tableLayoutPanel4
@@ -163,13 +163,14 @@
             tableLayoutPanel4.Location = new Point(0, 0);
             tableLayoutPanel4.Name = "tableLayoutPanel4";
             tableLayoutPanel4.RowCount = 2;
-            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 45F));
-            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 55F));
-            tableLayoutPanel4.Size = new Size(774, 1094);
+            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 60.4113121F));
+            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 39.5886879F));
+            tableLayoutPanel4.Size = new Size(839, 1167);
             tableLayoutPanel4.TabIndex = 0;
             // 
             // panel2
             // 
+            panel2.Controls.Add(IsPriorityCheckBox);
             panel2.Controls.Add(AddressControl);
             panel2.Controls.Add(IdTextBox);
             panel2.Controls.Add(FullNameTextBox);
@@ -179,14 +180,27 @@
             panel2.Dock = DockStyle.Fill;
             panel2.Location = new Point(3, 3);
             panel2.Name = "panel2";
-            panel2.Size = new Size(768, 486);
+            panel2.Size = new Size(833, 699);
             panel2.TabIndex = 0;
+            // 
+            // IsPriorityCheckBox
+            // 
+            IsPriorityCheckBox.AutoSize = true;
+            IsPriorityCheckBox.Location = new Point(142, 205);
+            IsPriorityCheckBox.Name = "IsPriorityCheckBox";
+            IsPriorityCheckBox.Size = new Size(144, 36);
+            IsPriorityCheckBox.TabIndex = 7;
+            IsPriorityCheckBox.Tag = "";
+            IsPriorityCheckBox.Text = "Is Priority";
+            IsPriorityCheckBox.UseVisualStyleBackColor = true;
+            IsPriorityCheckBox.CheckedChanged += IsPriorityCheckBox_CheckedChanged;
             // 
             // AddressControl
             // 
-            AddressControl.Location = new Point(3, 200);
+            AddressControl.Location = new Point(3, 270);
             AddressControl.Name = "AddressControl";
-            AddressControl.Size = new Size(768, 283);
+            AddressControl.ReadOnly = false;
+            AddressControl.Size = new Size(832, 302);
             AddressControl.TabIndex = 6;
             // 
             // IdTextBox
@@ -194,39 +208,39 @@
             IdTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             IdTextBox.BackColor = SystemColors.Control;
             IdTextBox.BorderStyle = BorderStyle.FixedSingle;
-            IdTextBox.Location = new Point(131, 74);
-            IdTextBox.MaximumSize = new Size(500, 500);
+            IdTextBox.Location = new Point(142, 79);
+            IdTextBox.MaximumSize = new Size(542, 500);
             IdTextBox.Name = "IdTextBox";
             IdTextBox.ReadOnly = true;
-            IdTextBox.Size = new Size(218, 35);
+            IdTextBox.Size = new Size(237, 39);
             IdTextBox.TabIndex = 5;
             // 
             // FullNameTextBox
             // 
             FullNameTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             FullNameTextBox.BorderStyle = BorderStyle.FixedSingle;
-            FullNameTextBox.Location = new Point(131, 136);
-            FullNameTextBox.MaximumSize = new Size(600, 600);
+            FullNameTextBox.Location = new Point(142, 145);
+            FullNameTextBox.MaximumSize = new Size(650, 600);
             FullNameTextBox.Name = "FullNameTextBox";
-            FullNameTextBox.Size = new Size(218, 35);
+            FullNameTextBox.Size = new Size(237, 39);
             FullNameTextBox.TabIndex = 4;
             FullNameTextBox.TextChanged += FullNameTextBox_TextChanged;
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(3, 138);
+            label5.Location = new Point(3, 147);
             label5.Name = "label5";
-            label5.Size = new Size(112, 30);
+            label5.Size = new Size(128, 32);
             label5.TabIndex = 3;
             label5.Text = "Full Name:";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(3, 76);
+            label3.Location = new Point(3, 81);
             label3.Name = "label3";
-            label3.Size = new Size(39, 30);
+            label3.Size = new Size(42, 32);
             label3.TabIndex = 1;
             label3.Text = "ID:";
             // 
@@ -236,7 +250,7 @@
             label2.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
             label2.Location = new Point(3, 0);
             label2.Name = "label2";
-            label2.Size = new Size(204, 30);
+            label2.Size = new Size(231, 32);
             label2.TabIndex = 0;
             label2.Text = "Selected Customer";
             // 
@@ -244,18 +258,18 @@
             // 
             panel3.BackColor = Color.White;
             panel3.Dock = DockStyle.Fill;
-            panel3.Location = new Point(3, 495);
+            panel3.Location = new Point(3, 708);
             panel3.Name = "panel3";
-            panel3.Size = new Size(768, 596);
+            panel3.Size = new Size(833, 456);
             panel3.TabIndex = 1;
             // 
             // CustomersTab
             // 
-            AutoScaleDimensions = new SizeF(12F, 30F);
+            AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(tableLayoutPanel1);
             Name = "CustomersTab";
-            Size = new Size(1300, 1100);
+            Size = new Size(1408, 1173);
             tableLayoutPanel1.ResumeLayout(false);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
@@ -287,5 +301,6 @@
         private Panel panel4;
         private TableLayoutPanel tableLayoutPanel4;
         private Controls.AddressControl AddressControl;
+        private CheckBox IsPriorityCheckBox;
     }
 }

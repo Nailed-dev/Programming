@@ -27,6 +27,8 @@ namespace ObjectOrientedPractics.View.Tabs
         {
             InitializeComponent();
             AddressControl.Address = new Address();
+            IsPriorityCheckBox.Enabled = false;
+
         }
 
         /// <summary>
@@ -36,7 +38,7 @@ namespace ObjectOrientedPractics.View.Tabs
         {
             IdTextBox.Clear();
             FullNameTextBox.Clear();
-            
+            IsPriorityCheckBox.Checked = false;
             IdTextBox.BackColor = Colors.NormalColor;
             FullNameTextBox.BackColor = Colors.NormalColor;
             AddressControl.Address = new Address();
@@ -60,7 +62,7 @@ namespace ObjectOrientedPractics.View.Tabs
         /// </summary>
         private void AddButton_Click(object sender, EventArgs e)
         {
-            _currentCustomer = new Customer("Empy user", new Address(), new Cart());
+            _currentCustomer = new Customer("Empy user", new Address(), new Cart(),false);
             Customers.Add(_currentCustomer);
             CustomersListBox.Items.Add(_currentCustomer.Fullname);
             CustomersListBox.SelectedIndex = Customers.Count - 1;
@@ -152,14 +154,28 @@ namespace ObjectOrientedPractics.View.Tabs
         /// </summary>
         private void CustomersListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int index = CustomersListBox.SelectedIndex;
-            if (index == -1) return;
-            _currentCustomer = Customers[index];
-            UpdateTextBoxes(_currentCustomer);
+            if (CustomersListBox.SelectedIndex == -1)
+            {
+                IsPriorityCheckBox.Enabled = false;
+                return;
+            }
+            IsPriorityCheckBox.Enabled = true;
+
+           
+            _currentCustomer = Customers[CustomersListBox.SelectedIndex];
+            IsPriorityCheckBox.Checked = _currentCustomer.IsPriority;
+            IdTextBox.Text = _currentCustomer.Id.ToString();
+            FullNameTextBox.Text = _currentCustomer.Fullname;
+            AddressControl.Address = _currentCustomer.Address;
         }
         /// <summary>
         /// Возвращает и задает коллекцию покупателей.
         /// </summary>
         public List<Customer> Customers { get; set; }
+
+        private void IsPriorityCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            _currentCustomer.IsPriority = IsPriorityCheckBox.Checked;
+        }
     }
 }

@@ -37,6 +37,11 @@ namespace ObjectOrientedPractics.Model
         /// Список заказов покупателя.
         /// </summary>
         private List<Order> _orders;
+        
+        /// <summary>
+        /// Приоритетный покупатель.
+        /// </summary>
+        private bool _isPriority;
 
         /// <summary>
         /// Возвращает и задает ФИО пользователя.
@@ -85,6 +90,7 @@ namespace ObjectOrientedPractics.Model
         public Customer()
         {
             _id = IdGenerator.GetNextId();
+            IsPriority = false;
         }
 
         /// <summary>
@@ -92,13 +98,15 @@ namespace ObjectOrientedPractics.Model
         /// </summary>
         /// <param name="fullname"></param>
         /// <param name="address"></param>
-        public Customer(string fullname, Address address, Cart cart)
+        public Customer(string fullname, Address address, Cart cart, bool isPriority)
         {
             Fullname = fullname;
             Address = address;
             _id = IdGenerator.GetNextId();
             Cart = cart;
             Orders = new List<Order>();
+            IsPriority = isPriority;
+
         }
 
         /// <summary>
@@ -130,6 +138,17 @@ namespace ObjectOrientedPractics.Model
                 _orders = value;
             }
 
+        }
+        /// <summary>
+        /// Возвращает и задает значение является ли покупатель приоритетным или нет.
+        /// </summary>
+        public bool IsPriority
+        {
+            get { return _isPriority; }
+            set
+            {
+                _isPriority = value;
+            }
         }
         
         

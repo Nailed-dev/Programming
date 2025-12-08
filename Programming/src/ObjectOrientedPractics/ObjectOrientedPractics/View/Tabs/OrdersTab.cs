@@ -3,6 +3,7 @@ using ObjectOrientedPractics.Model.Enums;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using ObjectOrientedPractics.Model;
 
 namespace ObjectOrientedPractics.View.Tabs
 {
@@ -24,6 +25,24 @@ namespace ObjectOrientedPractics.View.Tabs
         private Order _currentOrder;
 
         /// <summary>
+        /// Текущий приоритетный заказ.
+        /// </summary>
+        private PriorityOrder _currentPriorityOrder;
+
+        /// <summary>
+        /// Доступное время доставки.
+        /// </summary>
+        private string[] _deliveryTime =
+        {
+            "9:00 - 11:00",
+            "11:00 - 13:00",
+            "13:00 - 15:00",
+            "15:00 - 17:00",
+            "17:00 - 19:00",
+            "19:00 - 21:00"
+        };
+
+        /// <summary>
         /// Создаёт экземпляр класса <see cref="OrdersTab"/>.
         /// </summary>
         public OrdersTab()
@@ -38,7 +57,13 @@ namespace ObjectOrientedPractics.View.Tabs
             {
                 OrderStatusComboBox.Items.Add(value);
             }
+            foreach (var time in _deliveryTime)
+            {
+                DeliveryTimeSelectedOrderComboBox.Items.Add(time);
+            }
             OrderStatusComboBox.Enabled = false;
+            PriorityOptionsPanel.Visible = false;
+            
         }
 
         /// <summary>
@@ -91,6 +116,9 @@ namespace ObjectOrientedPractics.View.Tabs
         /// <summary>
         /// Устанавливает значения в элементы управления.
         /// </summary>
+        /// <summary>
+        /// Устанавливает значения в элементы управления.
+        /// </summary>
         private void SetValueInTextBoxes()
         {
             OrderStatusComboBox.Enabled = true;
@@ -98,13 +126,19 @@ namespace ObjectOrientedPractics.View.Tabs
             OrderDateTextBox.Text = _currentOrder.Date.ToString();
             OrderStatusComboBox.SelectedIndex = (int)_currentOrder.OrderStatus;
             OrderAddressControl.Address = _currentOrder.Address;
-            AmountLabel.Text = _currentOrder.Amount.ToString();
             OrderItemsListBox.Items.Clear();
             foreach (var item in _currentOrder.Items)
             {
                 OrderItemsListBox.Items.Add(item.Name);
             }
+            AmountLabel.Text = _currentOrder.Amount.ToString();
+
+            if (_currentOrder is PriorityOrder priority)
+            {
+                DeliveryTimeSelectedOrderComboBox.SelectedIndex = Array.IndexOf(_deliveryTime, _currentPriorityOrder.DeliveryTime);
+            }
         }
+
 
         private void OrdersDataGridView_SelectionChanged(object sender, EventArgs e)
         {
@@ -112,6 +146,18 @@ namespace ObjectOrientedPractics.View.Tabs
             if (index == -1) return;
 
             _currentOrder = _orders[index];
+
+            if (_currentOrder is PriorityOrder priority)
+            {
+                _currentPriorityOrder = (PriorityOrder)_orders[index];
+                PriorityOptionsPanel.Visible = true;
+            }
+            else
+            {
+                PriorityOptionsPanel.Visible = false;
+                _currentPriorityOrder = null;
+            }
+
             SetValueInTextBoxes();
         }
 
@@ -122,5 +168,13 @@ namespace ObjectOrientedPractics.View.Tabs
             _currentOrder.OrderStatus = (OrderStatus)OrderStatusComboBox.SelectedIndex;
             OrdersDataGridView.Rows[index].Cells[2].Value = (OrderStatus)OrderStatusComboBox.SelectedIndex;
         }
+
+        private void DeliveryTimeSelectedOrderComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _currentPriorityOrder.DeliveryTime = (string)DeliveryTimeSelectedOrderComboBox.SelectedItem;
+        }
     }
+
 }
+
+        
