@@ -1,24 +1,24 @@
-﻿namespace ObjectOrientedPractics.View
-{
-    partial class CartsTab
+﻿    namespace ObjectOrientedPractics.View
     {
-        /// <summary> 
-        /// Обязательная переменная конструктора.
-        /// </summary>
-        private System.ComponentModel.IContainer components = null;
-
-        /// <summary> 
-        /// Освободить все используемые ресурсы.
-        /// </summary>
-        /// <param name="disposing">истинно, если управляемый ресурс должен быть удален; иначе ложно.</param>
-        protected override void Dispose(bool disposing)
+        partial class CartsTab
         {
-            if (disposing && (components != null))
+            /// <summary> 
+            /// Обязательная переменная конструктора.
+            /// </summary>
+            private System.ComponentModel.IContainer components = null;
+
+            /// <summary> 
+            /// Освободить все используемые ресурсы.
+            /// </summary>
+            /// <param name="disposing">истинно, если управляемый ресурс должен быть удален; иначе ложно.</param>
+            protected override void Dispose(bool disposing)
             {
-                components.Dispose();
+                if (disposing && (components != null))
+                {
+                    components.Dispose();
+                }
+                base.Dispose(disposing);
             }
-            base.Dispose(disposing);
-        }
 
         #region Код, автоматически созданный конструктором компонентов
 
@@ -35,6 +35,11 @@
             ItemsListBox = new ListBox();
             label1 = new Label();
             panel2 = new Panel();
+            TotalDigitLabel = new Label();
+            TotalLabel = new Label();
+            DiscountAmountDigitLabel = new Label();
+            DiscountAmountLabel = new Label();
+            DiscountCheckedListBox = new CheckedListBox();
             AmountTextLabel = new Label();
             AmountLabel = new Label();
             tableLayoutPanel3 = new TableLayoutPanel();
@@ -129,6 +134,11 @@
             // 
             // panel2
             // 
+            panel2.Controls.Add(TotalDigitLabel);
+            panel2.Controls.Add(TotalLabel);
+            panel2.Controls.Add(DiscountAmountDigitLabel);
+            panel2.Controls.Add(DiscountAmountLabel);
+            panel2.Controls.Add(DiscountCheckedListBox);
             panel2.Controls.Add(AmountTextLabel);
             panel2.Controls.Add(AmountLabel);
             panel2.Controls.Add(tableLayoutPanel3);
@@ -141,6 +151,66 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(839, 1167);
             panel2.TabIndex = 1;
+            // 
+            // TotalDigitLabel
+            // 
+            TotalDigitLabel.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            TotalDigitLabel.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            TotalDigitLabel.Location = new Point(6, 1072);
+            TotalDigitLabel.Margin = new Padding(6, 0, 6, 0);
+            TotalDigitLabel.Name = "TotalDigitLabel";
+            TotalDigitLabel.RightToLeft = RightToLeft.No;
+            TotalDigitLabel.Size = new Size(816, 75);
+            TotalDigitLabel.TabIndex = 19;
+            TotalDigitLabel.Text = "0,00";
+            TotalDigitLabel.TextAlign = ContentAlignment.MiddleRight;
+            // 
+            // TotalLabel
+            // 
+            TotalLabel.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            TotalLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            TotalLabel.Location = new Point(6, 1017);
+            TotalLabel.Margin = new Padding(6, 0, 6, 0);
+            TotalLabel.Name = "TotalLabel";
+            TotalLabel.Size = new Size(816, 32);
+            TotalLabel.TabIndex = 18;
+            TotalLabel.Text = "TOTAL:";
+            TotalLabel.TextAlign = ContentAlignment.MiddleRight;
+            // 
+            // DiscountAmountDigitLabel
+            // 
+            DiscountAmountDigitLabel.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            DiscountAmountDigitLabel.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            DiscountAmountDigitLabel.Location = new Point(547, 655);
+            DiscountAmountDigitLabel.Margin = new Padding(6, 0, 6, 0);
+            DiscountAmountDigitLabel.Name = "DiscountAmountDigitLabel";
+            DiscountAmountDigitLabel.RightToLeft = RightToLeft.No;
+            DiscountAmountDigitLabel.Size = new Size(275, 75);
+            DiscountAmountDigitLabel.TabIndex = 17;
+            DiscountAmountDigitLabel.Text = "0,00";
+            DiscountAmountDigitLabel.TextAlign = ContentAlignment.MiddleRight;
+            // 
+            // DiscountAmountLabel
+            // 
+            DiscountAmountLabel.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            DiscountAmountLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            DiscountAmountLabel.Location = new Point(610, 623);
+            DiscountAmountLabel.Margin = new Padding(6, 0, 6, 0);
+            DiscountAmountLabel.Name = "DiscountAmountLabel";
+            DiscountAmountLabel.Size = new Size(212, 32);
+            DiscountAmountLabel.TabIndex = 16;
+            DiscountAmountLabel.Text = "Discount Amount:";
+            DiscountAmountLabel.TextAlign = ContentAlignment.MiddleRight;
+            // 
+            // DiscountCheckedListBox
+            // 
+            DiscountCheckedListBox.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            DiscountCheckedListBox.FormattingEnabled = true;
+            DiscountCheckedListBox.Location = new Point(6, 623);
+            DiscountCheckedListBox.Name = "DiscountCheckedListBox";
+            DiscountCheckedListBox.Size = new Size(498, 220);
+            DiscountCheckedListBox.TabIndex = 15;
+
             // 
             // AmountTextLabel
             // 
@@ -283,21 +353,26 @@
         #endregion
 
         private TableLayoutPanel tableLayoutPanel1;
-        private Panel panel1;
-        private Label label1;
-        private Panel panel2;
-        private ListBox ItemsListBox;
-        private TableLayoutPanel tableLayoutPanel2;
-        private ListBox CartListBox;
-        private Label label3;
-        private ComboBox CustomersComboBox;
-        private Label label2;
-        private Button AddToCartButton;
-        private TableLayoutPanel tableLayoutPanel3;
-        private Button CreateOrderButton;
-        private Button ClearCartButton;
-        private Button RemoveItemButton;
-        private Label AmountTextLabel;
-        private Label AmountLabel;
+            private Panel panel1;
+            private Label label1;
+            private Panel panel2;
+            private ListBox ItemsListBox;
+            private TableLayoutPanel tableLayoutPanel2;
+            private ListBox CartListBox;
+            private Label label3;
+            private ComboBox CustomersComboBox;
+            private Label label2;
+            private Button AddToCartButton;
+            private TableLayoutPanel tableLayoutPanel3;
+            private Button CreateOrderButton;
+            private Button ClearCartButton;
+            private Button RemoveItemButton;
+            private Label AmountTextLabel;
+            private Label AmountLabel;
+            private Label TotalDigitLabel;
+            private Label TotalLabel;
+            private Label DiscountAmountDigitLabel;
+            private Label DiscountAmountLabel;
+            private CheckedListBox DiscountCheckedListBox;
+        }
     }
-}

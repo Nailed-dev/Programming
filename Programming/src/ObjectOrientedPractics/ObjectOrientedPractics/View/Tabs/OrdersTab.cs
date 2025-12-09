@@ -3,7 +3,7 @@ using ObjectOrientedPractics.Model.Enums;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using ObjectOrientedPractics.Model;
+using ObjectOrientedPractics.Model.Orders;
 
 namespace ObjectOrientedPractics.View.Tabs
 {
@@ -108,7 +108,7 @@ namespace ObjectOrientedPractics.View.Tabs
                 {
                     _orders.Add(order);
                     OrdersDataGridView.Rows.Add(order.Id.ToString(), order.Date.ToString(), order.OrderStatus,
-                        customer.Fullname, fullAddress, order.Amount.ToString());
+                        customer.Fullname, fullAddress, order.Amount.ToString(), order.Total.ToString());
                 }
             }
         }
@@ -131,7 +131,8 @@ namespace ObjectOrientedPractics.View.Tabs
             {
                 OrderItemsListBox.Items.Add(item.Name);
             }
-            AmountLabel.Text = _currentOrder.Amount.ToString();
+            AmountDigitLabel.Text = _currentOrder.Amount.ToString("f2");
+            TotalAmountDigitLabel.Text = _currentOrder.Total.ToString("f2");
 
             if (_currentOrder is PriorityOrder priority)
             {

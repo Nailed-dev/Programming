@@ -52,5 +52,19 @@ namespace ObjectOrientedPractics.Services
                 throw new ArgumentException($"Пустая строка в {propertyName}");
             }
         }
+
+        /// <summary>
+        /// Проверяет является ли число положительным.
+        /// </summary>
+        /// <param name="propertyName"></param>
+        /// <param name="value"></param>
+        /// <exception cref="ArgumentException"></exception>
+        public static void AssertOnPositiveValue(string propertyName, double value)
+        {
+            if (value < 0)
+            {
+                throw new ArgumentException("${propertyName} должно быть положительным");
+            }
+        }
     }
 }

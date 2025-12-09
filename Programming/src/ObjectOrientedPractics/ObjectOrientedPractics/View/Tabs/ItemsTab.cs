@@ -42,7 +42,7 @@ namespace ObjectOrientedPractics.View.Tabs
         /// </summary>
         private void AddButton_Click(object sender, EventArgs e)
         {
-            _currentItem = new Item("Empty item", "Empty description", 0, "Empty category");
+            _currentItem = new Item("Empty item", "Empty description", 0, Category.Others);
             Items.Add(_currentItem);
             ItemsListBox.Items.Add(_currentItem.Name);
             ItemsListBox.SelectedIndex = Items.Count - 1;
@@ -70,7 +70,7 @@ namespace ObjectOrientedPractics.View.Tabs
             int index = ItemsListBox.SelectedIndex;
             if (index == -1) return;
             _currentItem = Items[index];
-            ItemCategoryComboBox.Text = _currentItem.Category;
+            ItemCategoryComboBox.SelectedItem = _currentItem.Category;
             UpdateTextBoxes(_currentItem);
 
         }
@@ -223,7 +223,7 @@ namespace ObjectOrientedPractics.View.Tabs
 
             try
             {
-                _currentItem.Category = ItemCategoryComboBox.SelectedItem.ToString();
+                _currentItem.Category = (Category)ItemCategoryComboBox.SelectedItem;
                 ItemCategoryComboBox.BackColor = Colors.NormalColor;
             }
             catch

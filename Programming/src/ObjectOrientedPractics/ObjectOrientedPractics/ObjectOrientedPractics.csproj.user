@@ -2,14 +2,17 @@
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup />
   <ItemGroup>
-    <Compile Update="View\Tabs\CartsTab.cs">
-      <SubType>UserControl</SubType>
+    <Compile Update="View\Forms\AddDiscountForm.cs">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Update="View\Controls\AddressControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="View\MainForm.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="View\Tabs\CartsTab.cs">
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="View\Tabs\CustomersTab.cs">
       <SubType>UserControl</SubType>

@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using ObjectOrientedPractics.Services;
 using ObjectOrientedPractics.View.Controls;
+using ObjectOrientedPractics.Model.Discounts;
+using ObjectOrientedPractics.Model.Orders;
 
 namespace ObjectOrientedPractics.Model
 {
@@ -53,6 +55,9 @@ namespace ObjectOrientedPractics.Model
         /// </summary>
         public int Id { get { return _id; } }
 
+
+        public List<IDiscount> Discounts { get; set; }
+
         public string Fullname
         {
             get
@@ -91,6 +96,10 @@ namespace ObjectOrientedPractics.Model
         {
             _id = IdGenerator.GetNextId();
             IsPriority = false;
+            Discounts = new List<IDiscount>();
+            Discounts.Add(new PointsDiscount());
+
+
         }
 
         /// <summary>
@@ -106,6 +115,8 @@ namespace ObjectOrientedPractics.Model
             Cart = cart;
             Orders = new List<Order>();
             IsPriority = isPriority;
+            Discounts = new List<IDiscount>();
+            Discounts.Add(new PointsDiscount());
 
         }
 
