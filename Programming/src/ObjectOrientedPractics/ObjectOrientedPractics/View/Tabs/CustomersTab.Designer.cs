@@ -46,12 +46,17 @@
             label3 = new Label();
             label2 = new Label();
             panel3 = new Panel();
+            RemoveDiscountButton = new Button();
+            AddDiscountButton = new Button();
+            DiscountsListBox = new ListBox();
+            label4 = new Label();
             tableLayoutPanel1.SuspendLayout();
             panel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
             panel4.SuspendLayout();
             tableLayoutPanel4.SuspendLayout();
             panel2.SuspendLayout();
+            panel3.SuspendLayout();
             SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -163,8 +168,8 @@
             tableLayoutPanel4.Location = new Point(0, 0);
             tableLayoutPanel4.Name = "tableLayoutPanel4";
             tableLayoutPanel4.RowCount = 2;
-            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 60.4113121F));
-            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 39.5886879F));
+            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 47.38646F));
+            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 52.61354F));
             tableLayoutPanel4.Size = new Size(839, 1167);
             tableLayoutPanel4.TabIndex = 0;
             // 
@@ -180,7 +185,7 @@
             panel2.Dock = DockStyle.Fill;
             panel2.Location = new Point(3, 3);
             panel2.Name = "panel2";
-            panel2.Size = new Size(833, 699);
+            panel2.Size = new Size(833, 547);
             panel2.TabIndex = 0;
             // 
             // IsPriorityCheckBox
@@ -257,11 +262,55 @@
             // panel3
             // 
             panel3.BackColor = Color.White;
+            panel3.Controls.Add(RemoveDiscountButton);
+            panel3.Controls.Add(AddDiscountButton);
+            panel3.Controls.Add(DiscountsListBox);
+            panel3.Controls.Add(label4);
             panel3.Dock = DockStyle.Fill;
-            panel3.Location = new Point(3, 708);
+            panel3.Location = new Point(3, 556);
             panel3.Name = "panel3";
-            panel3.Size = new Size(833, 456);
+            panel3.Size = new Size(833, 608);
             panel3.TabIndex = 1;
+            // 
+            // RemoveDiscountButton
+            // 
+            RemoveDiscountButton.BackColor = SystemColors.Control;
+            RemoveDiscountButton.Location = new Point(558, 137);
+            RemoveDiscountButton.Name = "RemoveDiscountButton";
+            RemoveDiscountButton.Size = new Size(200, 75);
+            RemoveDiscountButton.TabIndex = 3;
+            RemoveDiscountButton.Text = "Remove";
+            RemoveDiscountButton.UseVisualStyleBackColor = false;
+            RemoveDiscountButton.Click += RemoveDiscountButton_Click;
+            // 
+            // AddDiscountButton
+            // 
+            AddDiscountButton.BackColor = SystemColors.Control;
+            AddDiscountButton.Location = new Point(558, 45);
+            AddDiscountButton.Name = "AddDiscountButton";
+            AddDiscountButton.Size = new Size(200, 75);
+            AddDiscountButton.TabIndex = 2;
+            AddDiscountButton.Text = "Add";
+            AddDiscountButton.UseVisualStyleBackColor = false;
+            AddDiscountButton.Click += AddDiscountButton_Click;
+            // 
+            // DiscountsListBox
+            // 
+            DiscountsListBox.FormattingEnabled = true;
+            DiscountsListBox.Location = new Point(3, 45);
+            DiscountsListBox.Name = "DiscountsListBox";
+            DiscountsListBox.Size = new Size(549, 228);
+            DiscountsListBox.TabIndex = 1;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            label4.Location = new Point(3, 10);
+            label4.Name = "label4";
+            label4.Size = new Size(130, 32);
+            label4.TabIndex = 0;
+            label4.Text = "Discounts";
             // 
             // CustomersTab
             // 
@@ -278,6 +327,8 @@
             tableLayoutPanel4.ResumeLayout(false);
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
+            panel3.ResumeLayout(false);
+            panel3.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -302,5 +353,9 @@
         private TableLayoutPanel tableLayoutPanel4;
         private Controls.AddressControl AddressControl;
         private CheckBox IsPriorityCheckBox;
+        private Button RemoveDiscountButton;
+        private Button AddDiscountButton;
+        private ListBox DiscountsListBox;
+        private Label label4;
     }
 }

@@ -44,8 +44,8 @@
             DeliveryTimeSelectedOrderComboBox = new ComboBox();
             DeliveryTimeSelectedOrderLabel = new Label();
             PriorityOptionsLabel = new Label();
-            AmountLabel = new Label();
-            AmountTextLabel = new Label();
+            AmountDigitLabel = new Label();
+            AmountTextBox = new Label();
             OrderItemsListBox = new ListBox();
             label6 = new Label();
             OrderAddressControl = new ObjectOrientedPractics.View.Controls.AddressControl();
@@ -58,6 +58,8 @@
             label2 = new Label();
             cartBindingSource = new BindingSource(components);
             itemBindingSource = new BindingSource(components);
+            TotalAmountLabel = new Label();
+            TotalAmountDigitLabel = new Label();
             tableLayoutPanel1.SuspendLayout();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)OrdersDataGridView).BeginInit();
@@ -168,9 +170,11 @@
             // panel2
             // 
             panel2.BackColor = Color.White;
+            panel2.Controls.Add(TotalAmountDigitLabel);
+            panel2.Controls.Add(TotalAmountLabel);
             panel2.Controls.Add(PriorityOptionsPanel);
-            panel2.Controls.Add(AmountLabel);
-            panel2.Controls.Add(AmountTextLabel);
+            panel2.Controls.Add(AmountDigitLabel);
+            panel2.Controls.Add(AmountTextBox);
             panel2.Controls.Add(OrderItemsListBox);
             panel2.Controls.Add(label6);
             panel2.Controls.Add(OrderAddressControl);
@@ -229,30 +233,30 @@
             PriorityOptionsLabel.TabIndex = 10;
             PriorityOptionsLabel.Text = "Priority Options";
             // 
-            // AmountLabel
+            // AmountDigitLabel
             // 
-            AmountLabel.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            AmountLabel.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
-            AmountLabel.Location = new Point(20, 911);
-            AmountLabel.Margin = new Padding(6, 0, 6, 0);
-            AmountLabel.Name = "AmountLabel";
-            AmountLabel.RightToLeft = RightToLeft.No;
-            AmountLabel.Size = new Size(907, 75);
-            AmountLabel.TabIndex = 13;
-            AmountLabel.Text = "0,00";
-            AmountLabel.TextAlign = ContentAlignment.MiddleRight;
+            AmountDigitLabel.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            AmountDigitLabel.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            AmountDigitLabel.Location = new Point(20, 911);
+            AmountDigitLabel.Margin = new Padding(6, 0, 6, 0);
+            AmountDigitLabel.Name = "AmountDigitLabel";
+            AmountDigitLabel.RightToLeft = RightToLeft.No;
+            AmountDigitLabel.Size = new Size(907, 75);
+            AmountDigitLabel.TabIndex = 13;
+            AmountDigitLabel.Text = "0,00";
+            AmountDigitLabel.TextAlign = ContentAlignment.MiddleRight;
             // 
-            // AmountTextLabel
+            // AmountTextBox
             // 
-            AmountTextLabel.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            AmountTextLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            AmountTextLabel.Location = new Point(20, 875);
-            AmountTextLabel.Margin = new Padding(6, 0, 6, 0);
-            AmountTextLabel.Name = "AmountTextLabel";
-            AmountTextLabel.Size = new Size(907, 32);
-            AmountTextLabel.TabIndex = 12;
-            AmountTextLabel.Text = "Amount:";
-            AmountTextLabel.TextAlign = ContentAlignment.MiddleRight;
+            AmountTextBox.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            AmountTextBox.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            AmountTextBox.Location = new Point(20, 875);
+            AmountTextBox.Margin = new Padding(6, 0, 6, 0);
+            AmountTextBox.Name = "AmountTextBox";
+            AmountTextBox.Size = new Size(907, 32);
+            AmountTextBox.TabIndex = 12;
+            AmountTextBox.Text = "Amount:";
+            AmountTextBox.TextAlign = ContentAlignment.MiddleRight;
             // 
             // OrderItemsListBox
             // 
@@ -358,6 +362,31 @@
             // 
             itemBindingSource.DataSource = typeof(Model.Item);
             // 
+            // TotalAmountLabel
+            // 
+            TotalAmountLabel.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            TotalAmountLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            TotalAmountLabel.Location = new Point(20, 986);
+            TotalAmountLabel.Margin = new Padding(6, 0, 6, 0);
+            TotalAmountLabel.Name = "TotalAmountLabel";
+            TotalAmountLabel.Size = new Size(907, 32);
+            TotalAmountLabel.TabIndex = 21;
+            TotalAmountLabel.Text = "Total Amount:";
+            TotalAmountLabel.TextAlign = ContentAlignment.MiddleRight;
+            // 
+            // TotalAmountDigitLabel
+            // 
+            TotalAmountDigitLabel.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            TotalAmountDigitLabel.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            TotalAmountDigitLabel.Location = new Point(0, 1018);
+            TotalAmountDigitLabel.Margin = new Padding(6, 0, 6, 0);
+            TotalAmountDigitLabel.Name = "TotalAmountDigitLabel";
+            TotalAmountDigitLabel.RightToLeft = RightToLeft.No;
+            TotalAmountDigitLabel.Size = new Size(927, 75);
+            TotalAmountDigitLabel.TabIndex = 22;
+            TotalAmountDigitLabel.Text = "0,00";
+            TotalAmountDigitLabel.TextAlign = ContentAlignment.MiddleRight;
+            // 
             // OrdersTab
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
@@ -403,11 +432,13 @@
         private Controls.AddressControl OrderAddressControl;
         private ListBox OrderItemsListBox;
         private Label label6;
-        private Label AmountLabel;
-        private Label AmountTextLabel;
+        private Label AmountDigitLabel;
+        private Label AmountTextBox;
         private Panel PriorityOptionsPanel;
         private ComboBox DeliveryTimeSelectedOrderComboBox;
         private Label DeliveryTimeSelectedOrderLabel;
         private Label PriorityOptionsLabel;
+        private Label TotalAmountDigitLabel;
+        private Label TotalAmountLabel;
     }
 }

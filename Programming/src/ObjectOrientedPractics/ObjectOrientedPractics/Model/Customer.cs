@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using ObjectOrientedPractics.Services;
 using ObjectOrientedPractics.View.Controls;
 using ObjectOrientedPractics.Model.Discounts;
+using ObjectOrientedPractics.Model.Orders;
 
 namespace ObjectOrientedPractics.Model
 {
@@ -96,6 +97,8 @@ namespace ObjectOrientedPractics.Model
             _id = IdGenerator.GetNextId();
             IsPriority = false;
             Discounts = new List<IDiscount>();
+            Discounts.Add(new PointsDiscount());
+
 
         }
 

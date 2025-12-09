@@ -8,9 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ObjectOrientedPractics.Model;
+using ObjectOrientedPractics.Model.Discounts;
 using ObjectOrientedPractics.Services;
 using ObjectOrientedPractics.View.Controls;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using ObjectOrientedPractics.View.Forms;
 
 namespace ObjectOrientedPractics.View.Tabs
 {
@@ -23,6 +25,9 @@ namespace ObjectOrientedPractics.View.Tabs
         /// </summary>
         private Customer _currentCustomer;
 
+        /// <summary>
+        /// Создает экземпляр класса <see cref="CustomersTab"/>.
+        /// </summary>
         public CustomersTab()
         {
             InitializeComponent();
@@ -67,6 +72,8 @@ namespace ObjectOrientedPractics.View.Tabs
             CustomersListBox.Items.Add(_currentCustomer.Fullname);
             CustomersListBox.SelectedIndex = Customers.Count - 1;
             UpdateTextBoxes(_currentCustomer);
+            
+            UpdateDiscountsListBox();
         }
 
         /// <summary>
@@ -96,6 +103,8 @@ namespace ObjectOrientedPractics.View.Tabs
                 ClearTextBoxes();
             }
         }
+
+        
 
         /// <summary>
         /// Обновляет данные в списке CustomersListBox.
@@ -167,6 +176,7 @@ namespace ObjectOrientedPractics.View.Tabs
             IdTextBox.Text = _currentCustomer.Id.ToString();
             FullNameTextBox.Text = _currentCustomer.Fullname;
             AddressControl.Address = _currentCustomer.Address;
+            UpdateDiscountsListBox();
         }
         /// <summary>
         /// Возвращает и задает коллекцию покупателей.
@@ -177,5 +187,42 @@ namespace ObjectOrientedPractics.View.Tabs
         {
             _currentCustomer.IsPriority = IsPriorityCheckBox.Checked;
         }
+
+        private void UpdateDiscountsListBox()
+        {
+            DiscountsListBox.Items.Clear();
+            foreach (var discount in _currentCustomer.Discounts)
+            {
+                DiscountsListBox.Items.Add(discount.Info);
+            }
+        }
+
+        private void AddDiscountButton_Click(object sender, EventArgs e)
+        {
+            AddDiscountForm addDiscountForm = new AddDiscountForm();
+            if (addDiscountForm.ShowDialog() == DialogResult.OK)
+            {
+                foreach (var discount in _currentCustomer.Discounts)
+                {
+                    if (discount is PointsDiscount) continue;
+                    if (((PercentDiscount)discount).Category ==
+                        addDiscountForm.PercentDiscount.Category) return;
+                }
+                _currentCustomer.Discounts.Add(addDiscountForm.PercentDiscount);
+                UpdateDiscountsListBox();
+            }
+        }
+
+        private void RemoveDiscountButton_Click(object sender, EventArgs e)
+        {
+            int index = DiscountsListBox.SelectedIndex;
+            if (index == -1) return;
+            if (index == 0) return;
+            _currentCustomer.Discounts.RemoveAt(index);
+            UpdateDiscountsListBox();
+        }
+        
     }
+
+
 }
