@@ -4,10 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ObjectOrientedPractics.Services;
+using ObjectOrientedPractics.View.Tabs;
 
 namespace ObjectOrientedPractics.Model
 {
-    public class Address
+    
+    public class Address : ICloneable, IEquatable<Address>
     {
         /// <summary>
         /// Почтовый индекс.
@@ -172,7 +174,28 @@ namespace ObjectOrientedPractics.Model
             Apartment = "";
         }
 
+        public object Clone()
+        {
+            return new Address(this.Index, this.Country, this.City, this.Street, this.Building, this.Apartment);
+        }
 
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+                return false;
+
+            if (object.ReferenceEquals(this, obj))
+                return true;
+
+            var address = (Address)obj;
+
+            return (this.Index == address.Index);
+        }
+
+        public bool Equals(Address other)
+        {
+            throw new NotImplementedException();
+        }
 
     }
 }
