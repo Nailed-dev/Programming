@@ -30,6 +30,10 @@
         {
             tableLayoutPanel1 = new TableLayoutPanel();
             panel1 = new Panel();
+            OrderByComboBox = new ComboBox();
+            label9 = new Label();
+            FindTextBox = new TextBox();
+            label8 = new Label();
             tableLayoutPanel2 = new TableLayoutPanel();
             AddButton = new Button();
             RemoveButton = new Button();
@@ -47,10 +51,6 @@
             label4 = new Label();
             label3 = new Label();
             label2 = new Label();
-            label8 = new Label();
-            FindTextBox = new TextBox();
-            label9 = new Label();
-            OrderByComboBox = new ComboBox();
             tableLayoutPanel1.SuspendLayout();
             panel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
@@ -87,6 +87,43 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(557, 1167);
             panel1.TabIndex = 0;
+            // 
+            // OrderByComboBox
+            // 
+            OrderByComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            OrderByComboBox.FormattingEnabled = true;
+            OrderByComboBox.Location = new Point(137, 1001);
+            OrderByComboBox.Name = "OrderByComboBox";
+            OrderByComboBox.Size = new Size(416, 40);
+            OrderByComboBox.TabIndex = 6;
+            OrderByComboBox.SelectedIndexChanged += OrderByComboBox_SelectedIndexChanged;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new Point(18, 1004);
+            label9.Name = "label9";
+            label9.Size = new Size(113, 32);
+            label9.TabIndex = 5;
+            label9.Text = "Order by:";
+            // 
+            // FindTextBox
+            // 
+            FindTextBox.BorderStyle = BorderStyle.FixedSingle;
+            FindTextBox.Location = new Point(96, 45);
+            FindTextBox.Name = "FindTextBox";
+            FindTextBox.Size = new Size(457, 39);
+            FindTextBox.TabIndex = 4;
+            FindTextBox.TextChanged += FindTextBox_TextChanged;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(18, 48);
+            label8.Name = "label8";
+            label8.Size = new Size(65, 32);
+            label8.TabIndex = 3;
+            label8.Text = "Find:";
             // 
             // tableLayoutPanel2
             // 
@@ -284,41 +321,6 @@
             label2.Size = new Size(172, 32);
             label2.TabIndex = 0;
             label2.Text = "Selected Item";
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Location = new Point(18, 48);
-            label8.Name = "label8";
-            label8.Size = new Size(65, 32);
-            label8.TabIndex = 3;
-            label8.Text = "Find:";
-            // 
-            // FindTextBox
-            // 
-            FindTextBox.BorderStyle = BorderStyle.FixedSingle;
-            FindTextBox.Location = new Point(96, 45);
-            FindTextBox.Name = "FindTextBox";
-            FindTextBox.Size = new Size(457, 39);
-            FindTextBox.TabIndex = 4;
-            // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.Location = new Point(18, 1004);
-            label9.Name = "label9";
-            label9.Size = new Size(113, 32);
-            label9.TabIndex = 5;
-            label9.Text = "Order by:";
-            // 
-            // OrderByComboBox
-            // 
-            OrderByComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
-            OrderByComboBox.FormattingEnabled = true;
-            OrderByComboBox.Location = new Point(137, 1001);
-            OrderByComboBox.Name = "OrderByComboBox";
-            OrderByComboBox.Size = new Size(416, 40);
-            OrderByComboBox.TabIndex = 6;
             // 
             // ItemsTab
             // 

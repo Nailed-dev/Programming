@@ -69,10 +69,18 @@ namespace ObjectOrientedPractics.Services
         public List<Item> SortName(List<Item> items, string name)
         {
             List<Item> sortlist = new List<Item>();
-            foreach(Item item in items)
+            string searchNameLower;
+            if (name == null)
             {
-                item.Name.ToLower();
-                if (item.Name.Contains(name))
+                searchNameLower = string.Empty;
+            }
+            else
+            {
+                searchNameLower = name.ToLower();
+            }
+            foreach (Item item in items)
+            {
+                if (item.Name.ToLower().Contains(searchNameLower))
                 {
                     sortlist.Add(item);
                 }

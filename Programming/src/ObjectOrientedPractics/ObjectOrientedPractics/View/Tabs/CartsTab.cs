@@ -128,6 +128,7 @@ namespace ObjectOrientedPractics.View
                 CustomersComboBox.SelectedIndex = index;
             }
             UpdateAmountLabel();
+            UpdateDiscountDigit();
         }
 
         private void UpdateAmountLabel()
@@ -204,6 +205,9 @@ namespace ObjectOrientedPractics.View
             _currentCustomer.Cart.Items.Remove(_currentCustomer.Cart.Items[CartListBox.SelectedIndex]);
             UpdateCartListBox(CustomersComboBox.SelectedIndex);
             UpdateAmountLabel();
+
+            
+            UpdateDiscountDigit();
         }
         private void ClearCartButton_Click(Object sender, EventArgs e)
         {
@@ -212,6 +216,7 @@ namespace ObjectOrientedPractics.View
             _currentCustomer.Cart.Items.Clear();
             UpdateCartListBox(CustomersComboBox.SelectedIndex);
             UpdateAmountLabel();
+            UpdateDiscountDigit();
         }
 
         private void CreateOrderButton_Click(object sender, EventArgs e)

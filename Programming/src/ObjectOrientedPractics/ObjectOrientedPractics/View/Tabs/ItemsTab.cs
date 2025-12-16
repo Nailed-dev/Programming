@@ -26,32 +26,32 @@ namespace ObjectOrientedPractics.View.Tabs
         /// </summary>
         private Item _currentItem;
 
+        private List<Item> _displayedItems;
+
         public ItemsTab()
         {
             InitializeComponent();
 
             var items = Enum.GetValues(typeof(Category));
-
             foreach (var item in items)
             {
                 ItemCategoryComboBox.Items.Add(item);
             }
+
             _dataTool = new DataTool();
 
+            
+            Items = new List<Item>();
+            _displayedItems = new List<Item>();
 
+            
+            foreach (var sortOption in _dataTool.ComboSort)
+            {
+                OrderByComboBox.Items.Add(sortOption);
+            }
         }
 
-        /// <summary>
-        /// Добавление нового товара.
-        /// </summary>
-        private void AddButton_Click(object sender, EventArgs e)
-        {
-            _currentItem = new Item("Empty item", "Empty description", 0, Category.Others);
-            Items.Add(_currentItem);
-            ItemsListBox.Items.Add(_currentItem.Name);
-            ItemsListBox.SelectedIndex = Items.Count - 1;
-            UpdateTextBoxes(_currentItem);
-        }
+        
 
         /// <summary>
         /// Обновление текстбоксов.
@@ -72,11 +72,11 @@ namespace ObjectOrientedPractics.View.Tabs
         private void ItemsListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             int index = ItemsListBox.SelectedIndex;
-            if (index == -1) return;
-            _currentItem = Items[index];
+            if (index == -1 || index >= _displayedItems.Count) return;
+
+            _currentItem = _displayedItems[index];
             ItemCategoryComboBox.SelectedItem = _currentItem.Category;
             UpdateTextBoxes(_currentItem);
-
         }
 
         /// <summary>
@@ -85,11 +85,11 @@ namespace ObjectOrientedPractics.View.Tabs
         /// <param name="index">Индекс выбранного элемента.</param>
         private void UpdateListBox(int index)
         {
-            List<Item> items = Items;
-
+            
             ItemsListBox.Items.Clear();
 
-            foreach (var item in items)
+            
+            foreach (var item in _displayedItems)
             {
                 if (item.Name != "")
                 {
@@ -105,6 +105,82 @@ namespace ObjectOrientedPractics.View.Tabs
             {
                 ItemsListBox.SelectedIndex = index;
             }
+        
+        }
+
+        private void ApplySearchAndSort()
+        {
+            string searchText = FindTextBox.Text;
+            string sortType = OrderByComboBox.Text;
+
+           
+            List<Item> filteredItems;
+            if (!string.IsNullOrWhiteSpace(searchText))
+            {
+                filteredItems = _dataTool.SortName(Items, searchText);
+            }
+            else
+            {
+                filteredItems = new List<Item>(Items);
+            }
+
+            
+            switch (sortType)
+            {
+                case "Name":
+                    _displayedItems = _dataTool.SortByName(filteredItems);
+                    break;
+                case "Cost(Ascending)":
+                    _displayedItems = _dataTool.CostByAscending(filteredItems);
+                    break;
+                case "Cost (Descending)":
+                    _displayedItems = _dataTool.SortByCostDescending(filteredItems);
+                    break;
+                default:
+                    _displayedItems = filteredItems;
+                    break;
+            }
+
+            
+            UpdateListBox(-1);
+
+            
+            if (_currentItem != null)
+            {
+                int newIndex = _displayedItems.IndexOf(_currentItem);
+                if (newIndex != -1)
+                {
+                    ItemsListBox.SelectedIndex = newIndex;
+                }
+            }
+        }
+
+        private void FindTextBox_TextChanged(object sender, EventArgs e)
+        {
+            ApplySearchAndSort();
+        }
+
+        private void OrderByComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ApplySearchAndSort();
+        }
+
+        private void AddButton_Click(object sender, EventArgs e)
+        {
+            _currentItem = new Item("Empty item", "Empty description", 0, Category.Others);
+            Items.Add(_currentItem);
+
+            
+            ApplySearchAndSort();
+
+            
+            int index = _displayedItems.IndexOf(_currentItem);
+            if (index != -1)
+            {
+                ItemsListBox.SelectedIndex = index;
+            }
+
+            UpdateTextBoxes(_currentItem);
         }
 
         /// <summary>
@@ -112,23 +188,38 @@ namespace ObjectOrientedPractics.View.Tabs
         /// </summary>
         private void RemoveButton_Click_1(object sender, EventArgs e)
         {
-            if (ItemsListBox.Items.Count == 0) return;
-            int index = ItemsListBox.SelectedIndex;
-            Items.RemoveAt(index);
-            ItemsListBox.Items.RemoveAt(index);
+            if (ItemsListBox.Items.Count == 0 || ItemsListBox.SelectedIndex == -1) return;
 
-            if (ItemsListBox.Items.Count > index)
-                ItemsListBox.SelectedIndex = index;
-            else if (ItemsListBox.Items.Count != 0)
-                ItemsListBox.SelectedIndex = 0;
+            int selectedIndex = ItemsListBox.SelectedIndex;
+
+            
+            if (selectedIndex < _displayedItems.Count)
+            {
+                Item itemToRemove = _displayedItems[selectedIndex];
+                Items.Remove(itemToRemove);
+
+                
+                if (_currentItem == itemToRemove)
+                {
+                    _currentItem = null;
+                }
+            }
+
+            
+            ApplySearchAndSort();
+
+            
+            if (_displayedItems.Count > 0)
+            {
+                ItemsListBox.SelectedIndex = Math.Min(selectedIndex, _displayedItems.Count - 1);
+            }
             else
-                ItemsListBox.SelectedIndex = -1;
-
-            UpdateTextBoxes(_currentItem);
-
-            if (ItemsListBox.Items.Count == 0)
+            {
                 ClearTextBoxes();
+                _currentItem = null; 
         }
+
+
 
 
 
@@ -185,7 +276,16 @@ namespace ObjectOrientedPractics.View.Tabs
             {
                 NameTextBox.BackColor = Colors.NormalColor;
                 _currentItem.Name = NameTextBox.Text;
-                ItemsListBox.Items[Items.IndexOf(_currentItem)] = _currentItem.Name;
+
+                
+                int displayedIndex = _displayedItems.IndexOf(_currentItem);
+                if (displayedIndex != -1)
+                {
+                    ItemsListBox.Items[displayedIndex] = _currentItem.Name;
+                }
+
+                
+                ApplySearchAndSort();
             }
             catch
             {
