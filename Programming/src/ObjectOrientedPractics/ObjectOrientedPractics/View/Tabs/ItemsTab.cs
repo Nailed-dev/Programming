@@ -16,8 +16,11 @@ namespace ObjectOrientedPractics.View.Tabs
 {
     public partial class ItemsTab : UserControl
     {
-        
 
+        /// <summary>
+        /// Инструмент для работы с данными.
+        /// </summary>
+        private DataTool _dataTool;
         /// <summary>
         /// Выбранный товар.
         /// </summary>
@@ -33,6 +36,7 @@ namespace ObjectOrientedPractics.View.Tabs
             {
                 ItemCategoryComboBox.Items.Add(item);
             }
+            _dataTool = new DataTool();
 
 
         }
@@ -239,5 +243,6 @@ namespace ObjectOrientedPractics.View.Tabs
         {
             get; set;
         }
+         
     }
 }

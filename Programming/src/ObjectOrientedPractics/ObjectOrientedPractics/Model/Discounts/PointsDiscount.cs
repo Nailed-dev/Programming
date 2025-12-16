@@ -8,7 +8,7 @@ using ObjectOrientedPractics.Model;
 
 namespace ObjectOrientedPractics.Model.Discounts
 {
-    public class PointsDiscount : IDiscount
+    public class PointsDiscount : IDiscount, IComparable<PointsDiscount>
     {   
         /// <summary>
         /// Накопительная скидка.
@@ -90,6 +90,32 @@ namespace ObjectOrientedPractics.Model.Discounts
             _points += (int)Math.Ceiling(amount * 0.1);
         }
 
+
+        /// <summary>
+        /// Сравнивает другой экземпляр с другим объектом <see cref="PointsDiscount"/> по колличеству баллов.
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns></returns>
+        /// <exception cref="NotImplementedException">Выбрасывается в неожиданных случаях сравнения (должно быть обработано в коде).</exception>
+        public int CompareTo(PointsDiscount other)
+        {
+            if (this.Points == other.Points)
+            {
+                return 0;
+            }
+            if (this.Points > other.Points)
+            {
+                return 1;
+            }
+            if (this.Points < other.Points)
+            {
+                return -1;
+            }
+            else
+            {
+                throw new NotImplementedException();
+            }
+        }
 
 
 

@@ -11,7 +11,7 @@ namespace ObjectOrientedPractics.Model.Discounts
     /// <summary>
     /// Представляет реализацию по представлению процентной скидки.
     /// </summary>
-    public class PercentDiscount : IDiscount
+    public class PercentDiscount : IDiscount, IComparable<PercentDiscount>
     {
         /// <summary>
         /// Создает экземпляр класса <see cref="PercentDiscount"/>.
@@ -97,6 +97,33 @@ namespace ObjectOrientedPractics.Model.Discounts
             else if (newDiscountPercent > 10)
             {
                 CurrentPercentDiscount = 10;
+            }
+        }
+
+
+        /// <summary>
+        /// Сравнивает текущий экземпляр с другим объектом <see cref="PercentDiscount"/> по проценту скидки.
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns></returns>
+        /// <exception cref="NotImplementedException">Выбрасывается в неожиданных случаях сравнения.</exception>
+        public int CompareTo(PercentDiscount other)
+        {
+            if (this.CurrentPercentDiscount == other.CurrentPercentDiscount)
+            {
+                return 0;
+            }
+            if (this.CurrentPercentDiscount > other.CurrentPercentDiscount)
+            {
+                return 1;
+            }
+            if (this.CurrentPercentDiscount < other.CurrentPercentDiscount)
+            {
+                return -1;
+            }
+            else
+            {
+                throw new NotImplementedException();
             }
         }
 

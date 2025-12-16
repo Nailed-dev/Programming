@@ -194,8 +194,7 @@ namespace ObjectOrientedPractics.View
 
             _currentCustomer.Cart.Items.Add(Items[ItemsListBox.SelectedIndex]);
             UpdateCartListBox(CustomersComboBox.SelectedIndex);
-            UpdateAmountLabel();
-
+            UpdateDiscountDigit();
         }
 
         private void RemoveItemButton_Click(object sender, EventArgs e)

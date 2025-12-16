@@ -12,7 +12,7 @@ namespace ObjectOrientedPractics.Model
     /// <summary>
     /// Товар.
     /// </summary>
-    public class Item
+    public class Item : ICloneable, IEquatable<Item>, IComparable<Item>
     {
         /// <summary>
         /// _id товара.
@@ -117,5 +117,56 @@ namespace ObjectOrientedPractics.Model
             _id = IdGenerator.GetNextId();
             Category = category;
         }
+
+
+        /// <summary>
+        /// Создает глубокую копию текущего объекта <see cref="Address"/>.
+        /// </summary>
+        /// <returns>Новый объект <see cref="Address"/> с такими же значениями свойств.</returns>
+        public object Clone()
+        {
+            return new Item(this.Name, this.Info, this.Cost, this.Category);
+        }
+
+
+        public bool Equals(Item other)
+        {
+            if (other == null)
+                return false;
+
+            if (object.ReferenceEquals(this, other))
+                return true;
+
+            return (this.Name == other.Name);
+        }
+
+        public int CompareTo(Item other)
+        {
+
+            if (this.Cost == other.Cost)
+            {
+                return 0;
+            }
+            if (this.Cost > other.Cost)
+            {
+                return 1;
+            }
+            if (this.Cost < other.Cost)
+            {
+                return -1;
+            }
+            else
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+
+        public override string ToString()
+        {
+            return $"ID: {Id}, Name: {Name}, Cost: {Cost}";
+        }
     }
+
+
 }

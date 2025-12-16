@@ -47,6 +47,10 @@
             label4 = new Label();
             label3 = new Label();
             label2 = new Label();
+            label8 = new Label();
+            FindTextBox = new TextBox();
+            label9 = new Label();
+            OrderByComboBox = new ComboBox();
             tableLayoutPanel1.SuspendLayout();
             panel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
@@ -71,6 +75,10 @@
             // panel1
             // 
             panel1.BackColor = Color.White;
+            panel1.Controls.Add(OrderByComboBox);
+            panel1.Controls.Add(label9);
+            panel1.Controls.Add(FindTextBox);
+            panel1.Controls.Add(label8);
             panel1.Controls.Add(tableLayoutPanel2);
             panel1.Controls.Add(ItemsListBox);
             panel1.Controls.Add(label1);
@@ -126,9 +134,9 @@
             ItemsListBox.BorderStyle = BorderStyle.FixedSingle;
             ItemsListBox.FormattingEnabled = true;
             ItemsListBox.IntegralHeight = false;
-            ItemsListBox.Location = new Point(3, 42);
+            ItemsListBox.Location = new Point(3, 97);
             ItemsListBox.Name = "ItemsListBox";
-            ItemsListBox.Size = new Size(550, 996);
+            ItemsListBox.Size = new Size(550, 890);
             ItemsListBox.TabIndex = 1;
             ItemsListBox.SelectedIndexChanged += ItemsListBox_SelectedIndexChanged;
             // 
@@ -277,6 +285,41 @@
             label2.TabIndex = 0;
             label2.Text = "Selected Item";
             // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(18, 48);
+            label8.Name = "label8";
+            label8.Size = new Size(65, 32);
+            label8.TabIndex = 3;
+            label8.Text = "Find:";
+            // 
+            // FindTextBox
+            // 
+            FindTextBox.BorderStyle = BorderStyle.FixedSingle;
+            FindTextBox.Location = new Point(96, 45);
+            FindTextBox.Name = "FindTextBox";
+            FindTextBox.Size = new Size(457, 39);
+            FindTextBox.TabIndex = 4;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new Point(18, 1004);
+            label9.Name = "label9";
+            label9.Size = new Size(113, 32);
+            label9.TabIndex = 5;
+            label9.Text = "Order by:";
+            // 
+            // OrderByComboBox
+            // 
+            OrderByComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            OrderByComboBox.FormattingEnabled = true;
+            OrderByComboBox.Location = new Point(137, 1001);
+            OrderByComboBox.Name = "OrderByComboBox";
+            OrderByComboBox.Size = new Size(416, 40);
+            OrderByComboBox.TabIndex = 6;
+            // 
             // ItemsTab
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
@@ -314,5 +357,9 @@
         private Label label5;
         private ComboBox ItemCategoryComboBox;
         private Label label7;
+        private ComboBox OrderByComboBox;
+        private Label label9;
+        private TextBox FindTextBox;
+        private Label label8;
     }
 }
