@@ -88,7 +88,7 @@ namespace ObjectOrientedPractics.Model
                 if (_info != value)
                 {
                     var args = new EventArgs();
-                    _name = value;
+                    _info = value;
                     InfoChanged?.Invoke(this, args);
                 }
             }

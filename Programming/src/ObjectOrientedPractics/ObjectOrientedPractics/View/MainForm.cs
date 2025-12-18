@@ -27,7 +27,8 @@ namespace ObjectOrientedPractics
             CartsTab.Customers = Store.Customers;
             OrdersTab.Customers = Store.Customers;
             PriorityOrdersTab.Items = Store.Items;
-           
+            ItemsTab.ItemsChanged += ItemsTab_ItemsChanged;
+
         }
 
         public Store Store
@@ -42,11 +43,10 @@ namespace ObjectOrientedPractics
             }
         }
 
-        private void SelectedTabChanged(object sender, EventArgs e)
+        private void ItemsTab_ItemsChanged(object sender, EventArgs e)
         {
             CartsTab.RefreshData();
             OrdersTab.RefreshData();
-
         }
     }
 }

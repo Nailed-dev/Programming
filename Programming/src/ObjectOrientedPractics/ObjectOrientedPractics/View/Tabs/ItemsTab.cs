@@ -26,7 +26,19 @@ namespace ObjectOrientedPractics.View.Tabs
         /// </summary>
         private Item _currentItem;
 
+        /// <summary>
+        /// Отображаемые товары.
+        /// </summary>
         private List<Item> _displayedItems;
+        
+        /// <summary>
+        /// Событие изменения списка товаров.
+        /// </summary>
+        public event EventHandler<EventArgs> ItemsChanged;
+        
+
+
+        
 
         public ItemsTab()
         {
@@ -51,7 +63,80 @@ namespace ObjectOrientedPractics.View.Tabs
             }
         }
 
+        /// <summary>
+        /// Метод для вызова события ItemsChanged.
+        /// </summary>
+        private void OnItemsChanged()
+        {
+            ItemsChanged?.Invoke(this, EventArgs.Empty);
+        }
         
+        /// <summary>
+        /// Подписка на события товара.
+        /// </summary>
+        /// <param name="item"></param>
+        private void SubscribeToItemEvents(Item item)
+        {
+            if (item != null)
+            {
+                item.NameChanged += Item_NameChanged;
+                item.CostChanged += Item_CostChanged;
+                item.InfoChanged += Item_InfoChanged;
+            }
+        }
+
+        /// <summary>
+        /// Отписка от событий товара.
+        /// </summary>
+        /// <param name="item"></param>
+        private void UnsubscribeFromItemEvents(Item item)
+        {
+            if (item != null)
+            {
+                item.NameChanged -= Item_NameChanged;
+                item.CostChanged -= Item_CostChanged;
+                item.InfoChanged -= Item_InfoChanged;
+            }
+        }
+
+        /// <summary>
+        /// Обработчик изменения имени товара.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Item_NameChanged(object sender, EventArgs e)
+        {
+            OnItemsChanged();
+        }
+
+        /// <summary>
+        /// Обработчик изменения цены товара.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Item_CostChanged(object sender, EventArgs e)
+        {
+            OnItemsChanged();
+        }
+        
+        /// <summary>
+        /// Обработчик изменения описания товара.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Item_InfoChanged(object sender, EventArgs e)
+        {
+            OnItemsChanged();
+        }
+
+      
+
+
+
+
+
+
+
 
         /// <summary>
         /// Обновление текстбоксов.
@@ -71,12 +156,17 @@ namespace ObjectOrientedPractics.View.Tabs
         /// </summary>
         private void ItemsListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (_currentItem != null)
+            {
+                UnsubscribeFromItemEvents(_currentItem);
+            }
             int index = ItemsListBox.SelectedIndex;
             if (index == -1 || index >= _displayedItems.Count) return;
 
             _currentItem = _displayedItems[index];
             ItemCategoryComboBox.SelectedItem = _currentItem.Category;
             UpdateTextBoxes(_currentItem);
+            SubscribeToItemEvents(_currentItem);
         }
 
         /// <summary>
@@ -169,8 +259,9 @@ namespace ObjectOrientedPractics.View.Tabs
         {
             _currentItem = new Item("Empty item", "Empty description", 0, Category.Others);
             Items.Add(_currentItem);
+            SubscribeToItemEvents(_currentItem);
 
-            
+
             ApplySearchAndSort();
 
             
@@ -181,6 +272,8 @@ namespace ObjectOrientedPractics.View.Tabs
             }
 
             UpdateTextBoxes(_currentItem);
+            OnItemsChanged();
+
         }
 
         /// <summary>
@@ -192,23 +285,24 @@ namespace ObjectOrientedPractics.View.Tabs
 
             int selectedIndex = ItemsListBox.SelectedIndex;
 
-            
+
             if (selectedIndex < _displayedItems.Count)
             {
                 Item itemToRemove = _displayedItems[selectedIndex];
+                UnsubscribeFromItemEvents(itemToRemove);
                 Items.Remove(itemToRemove);
 
-                
+
                 if (_currentItem == itemToRemove)
                 {
                     _currentItem = null;
                 }
             }
 
-            
+
             ApplySearchAndSort();
 
-            
+
             if (_displayedItems.Count > 0)
             {
                 ItemsListBox.SelectedIndex = Math.Min(selectedIndex, _displayedItems.Count - 1);
@@ -216,8 +310,11 @@ namespace ObjectOrientedPractics.View.Tabs
             else
             {
                 ClearTextBoxes();
-                _currentItem = null; 
-        }
+                _currentItem = null;
+
+            }
+            OnItemsChanged();
+        }  
 
 
 
@@ -285,7 +382,7 @@ namespace ObjectOrientedPractics.View.Tabs
                 }
 
                 
-                ApplySearchAndSort();
+                
             }
             catch
             {
